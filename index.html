@@ -18,7 +18,8 @@
         }
 
         .name,
-        .about {
+        .about,
+        .zen {
             font-size: 30px;
             margin-top: 30px;
             margin-bottom: 16px;
@@ -123,12 +124,36 @@
         ]
     }
     </script>
+    <script>
+        function loadGithubZenQuote() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'https://api.github.com/zen');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.querySelector('.zen').innerHTML = xhr.responseText;
+                }
+                else {
+                    document.querySelector('.zen').innerHTML = 'Error getting Zen quote from GitHub.';
+                }
+            };
+            xhr.send();
+        }
+        function initialize() {
+            loadGithubZenQuote()
+        }
+        window.onload = initialize()
+    </script>
 </head>
 
 <body>
     <div class="hello-dp-wrapper">
         <div class="hello">
             Hello.
+        </div>
+        <div>
+            <div class="zen">
+                ...
+            </div>
         </div>
         <div class="profile-picture-wrapper">
             <img class="profile-picture" alt='amit saharan'
@@ -139,7 +164,8 @@
         My name is Amit Saharan.
     </div>
     <div class="about">
-        I am the Co-founder and CTO of <a href='https://www.prepleaf.com'>Prepleaf</a>.
+        I am the Co-founder and CTO of <a href='https://www.prepleaf.com'>Prepleaf</a>. Currently, I am working at Masai
+        School as a Director of Technology.
     </div>
     <br />
     <h3>Find me on</h3>
