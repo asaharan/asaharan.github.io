@@ -1,0 +1,35 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      - echo "Checking if pnpm is installed..."
+      - |
+        if ! command -v pnpm &> /dev/null
+        then
+            echo "pnpm not found, installing..."
+            npm install -g pnpm
+        else
+            echo "pnpm is installed"
+        fi
+
+  pre_build:
+    commands:
+      - echo "Running pnpm install..."
+      - pnpm install
+
+  build:
+    commands:
+      - echo "Building the project..."
+      - pnpm run build
+
+artifacts:
+  files:
+    - dist/**/*
+  discard-paths: yes
+
+cache:
+  paths:
+    - '~/.pnpm-store/v3/**/*'
