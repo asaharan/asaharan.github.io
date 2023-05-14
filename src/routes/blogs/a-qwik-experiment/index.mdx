@@ -1,0 +1,127 @@
+---
+title: A Qwik experiment
+description: I came across Qwik, a new framework for building web applications. I decided to give it a try and share my experience.
+created: 2023-05-13
+og:
+  - image: /icons/qwik.svg
+---
+
+import { About } from "~/components/About";
+
+<h1 class="font-bold text-3xl mb-4">A Qwik experiment</h1>
+
+<h2 class="font-bold text-2xl mb-2 mt-2">Why Qwik?</h2>
+
+I always used to wonder
+why is so much JavaScript loaded on the browser even when there are no
+interactions on the page.
+
+I have been using <a class='link' href="https://svelte.dev">Svelte</a> for more than 2 years now, and I really like the way it compiles the code to vanilla JavaScript.
+But still, it loads some JS. By the way we recently moved away from using Next.JS and started using SvelteKit for our website <a class='link' href="https://www.prepleaf.com">Prepleaf</a>.
+
+A couple of months ago, I came across <a class='link' href="https://qwik.builder.io">Qwik</a>. So yesterday, I decided to give it a try. Qwik seemed precisely the framework I was looking for.
+
+<h2 class="font-bold text-2xl mb-2 mt-4">Developer experience?</h2>
+
+Setting up a new project is very easy. Just run <code class='inline-code'>pnpm create qwik@latest</code> and you are good to go.
+
+<br />I have used React for the past 5 years, so I feel right at home with Qwik,
+as it also uses JSX for templating. Although there are many new things to learn,
+the basic functionalities, like importing a component, and passing props, stay
+the same.
+<br />
+
+<div class="px-4">
+  <ol class="list-disc">
+    <li>
+      <div>Routing: Similar to Next.JS.</div>
+      <code class="inline-code">
+        {`src/routes/blogs/a-qwik-experiment/index.mdx`}
+      </code>
+    </li>
+    <li>
+      <div>Components: Similar to React but with one major difference that</div>
+      <code class="inline-code">
+        {`export const TopbarLink = ({(text, href)}: TopbarLinkProps)`}
+      </code>
+      <span>: Not loaded lazyly</span>
+      <br />
+      <code class="inline-code">
+        {`export const TopbarLink = component$({(text, href)}: TopbarLinkProps)`}
+      </code>
+      <span>: Lazyly loaded</span>
+    </li>
+    <li>
+      State Management: It has <span class="inline-code">useStore</span>, seems
+      very similar to React.
+    </li>
+  </ol>
+</div>
+<br />
+As it uses <a class="link" href="https://vitejs.dev/">
+  vite
+</a>, developer experience is great. You can start using TailwindCSS, TypeScript,
+and other tools right away.
+
+<br />
+
+<h2 class="font-bold text-2xl mb-2 mt-4">How does it work?</h2>
+
+Of course you should read in detail on official website, but here are highlights
+
+<div class="px-4">
+  <ol class="list-disc my-2">
+    <li class="list-item">
+      <span class="font-bold block">Delay Execution</span>
+      Delay execution of JavaScript as much as possible. <span class="italic">
+        At its simplest, a Qwik application only needs about 1KB of JavaScript
+        to become interactive
+      </span>🤯.
+    </li>
+    <li class="list-item">
+      <span class="font-bold block">Resumability & Serialization</span>One of
+      the major differentiators of Qwik is that it is designed to be resumable
+      and serializable. This means that the execution of the application can be
+      paused and resumed at any point in time. This enables seamless execution
+      from where the server left off, avoiding the need for rebuilding data
+      structures and attaching listeners in the browser.
+    </li>
+  </ol>
+</div>
+
+<div class="italic text-gray-500 mt-2">
+  Now, you might be wondering, what if my network is slow? In that case, it
+  would take some time to load the JavaScript; once it loads, it will only
+  execute it and perform the desired action.
+</div>
+
+Well, Qwik has a solution for that as well. It loads the JavaScript chunks in the background using a service worker, which doesn't affect the main thread. So, before you click on a link, the JavaScript is already loaded in the background.
+
+<div class="my-2" />
+<h2 class="font-bold text-2xl mb-2 mt-4">Performance</h2>
+
+The page you are looking at right now is built using Qwik and it's not loading
+any JavaScript file. It has only added just a bit of JS in one of the script
+tags to load the required code.
+
+<code class="code my-2">
+  Most important thing to note here is that that the{" "}
+  <span class="font-bold">Total Blocking Time</span>
+  is <span>0 ms</span>
+</code>
+
+Which means that there is no JavaScript blocking the main thread.
+
+<div class="mt-2">Here is a screenshot from the Chrome Dev Tools.</div>
+<a href="/images/screenshot-lighthouse-qwik.png" class="my-2 inline-block">
+  <img src="/images/screenshot-lighthouse-qwik.png" height="100" class="h-72" />
+</a>
+As I am using images from github.com and svgporn.com, the Largest Contentful
+Paint is not very good. I will try to improve it in the future.
+
+<h2 class="text-gray-600 text-xl mb-2 mt-4 italic">
+  I am loving it so far. Will keep you posted on my experience with Qwik.
+</h2>
+
+<h2 class="text-2xl font-bold mt-8 mb-2">About me</h2>
+<About />
