@@ -41,6 +41,7 @@
     "vite-tsconfig-paths": "4.2.0"
   },
   "dependencies": {
-    "clsx": "^1.2.1"
+    "clsx": "^1.2.1",
+    "tweetnacl": "^1.0.3"
   }
 }
