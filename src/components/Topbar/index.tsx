@@ -9,9 +9,13 @@ const links = [
     href: "/",
   },
   {
-    text: "Quick Tools",
+    text: "Tools",
     href: "/tools",
     isExternal: true,
+  },
+  {
+    text: "Playground",
+    href: "/playground",
   },
   {
     text: "Blog",
