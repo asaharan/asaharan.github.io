@@ -55,7 +55,9 @@ export default component$(() => {
                   name="category"
                   value={category}
                   onInput$={(e) => {
-                    selectedCategory.value = e.target?.value;
+                    selectedCategory.value = (
+                      e.target as HTMLInputElement
+                    ).value;
                   }}
                 />
                 {category}
@@ -79,12 +81,6 @@ export default component$(() => {
               <div>
                 <div class="flex gap-2">
                   <h3 class="text-xl">{plugin.manifest.name_for_human}</h3>
-                  {typeof plugin.originalIndex !== "undefined" ? (
-                    <span>
-                      Page: {Math.ceil((plugin.originalIndex + 1) / 8)}#
-                      {plugin.originalIndex}
-                    </span>
-                  ) : null}
                   <div>
                     {plugin.categories.map((category) => {
                       return (

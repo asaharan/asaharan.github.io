@@ -5050,8 +5050,10 @@ const chatGPTResponse: {
     },
   ],
 };
-
-const items: ChatGPTPluginItem[] = chatGPTResponse.items
+const sorted = chatGPTResponse.items.sort((a, b) => {
+  return a.manifest.name_for_human.localeCompare(b.manifest.name_for_human);
+});
+const items: ChatGPTPluginItem[] = sorted
   .map((item, index) => {
     const rootDomain = parse(item.domain).domain || undefined;
     return {
