@@ -5,6 +5,9 @@ export default function Playground() {
     <div>
       <h1 class="text-3xl font-bold mb-3">Playground</h1>
       <div class="gap-2 flex flex-wrap">
+        <Link class="link" href="/playground/ChatGPTExperiment">
+          ChatGPT Experiment
+        </Link>
         <Link class="link" href="/playground/ChatGPTPluginsSearch">
           ChatGPT Plugins Search
         </Link>
