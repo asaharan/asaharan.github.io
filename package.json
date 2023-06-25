@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "clsx": "^1.2.1",
+    "gpt-tokenizer": "^2.1.1",
     "tldts": "^6.0.5",
     "tweetnacl": "^1.0.3"
   }
