@@ -14,6 +14,9 @@ export default function Playground() {
         <Link class="link" href="/playground/tweetnacl">
           TweetNaCl
         </Link>
+        <Link class="link" href="/playground/bcrypt">
+          Bcrypt
+        </Link>
       </div>
     </div>
   );
