@@ -36,19 +36,19 @@ export const pages: {
         title: `${aboutMe.en.name} - ${aboutMe.en.shortAboutText}`,
         meta: [
           {
-            name: "description",
+            property: "description",
             content: aboutMe.en.shortAboutText,
           },
           {
-            name: "og:image",
+            property: "og:image",
             content: aboutMe.en.pictures[0],
           },
           {
-            name: 'twitter:card',
+            property: 'twitter:card',
             content: "summary",
           },
           {
-            name: "twitter:site",
+            property: "twitter:site",
             content: "@asaharan812",
           }
         ],
@@ -62,19 +62,19 @@ export const pages: {
         title: `${aboutMe.en.name} - ${aboutMe.en.shortAboutText}`,
         meta: [
           {
-            name: "description",
+            property: "description",
             content: aboutMe.en.shortAboutText,
           },
           {
-            name: "og:image",
+            property: "og:image",
             content: aboutMe.en.pictures[0],
           },
           {
-            name: 'twitter:card',
+            property: 'twitter:card',
             content: "large-summary",
           },
           {
-            name: "twitter:site",
+            property: "twitter:site",
             content: "@asaharan812",
           }
         ],
