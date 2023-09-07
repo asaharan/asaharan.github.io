@@ -29,6 +29,58 @@ export const pages: {
       },
     },
   ],
+  twitterSummary: [
+    {
+      lang: SupportedLanguages.en,
+      meta: {
+        title: `${aboutMe.en.name} - ${aboutMe.en.shortAboutText}`,
+        meta: [
+          {
+            name: "description",
+            content: aboutMe.en.shortAboutText,
+          },
+          {
+            name: "og:image",
+            content: aboutMe.en.pictures[0],
+          },
+          {
+            name: 'twitter:card',
+            content: "summary",
+          },
+          {
+            name: "twitter:site",
+            content: "@asaharan812",
+          }
+        ],
+      }
+    }
+  ],
+  twitterSummaryLargeImage: [
+    {
+      lang: SupportedLanguages.en,
+      meta: {
+        title: `${aboutMe.en.name} - ${aboutMe.en.shortAboutText}`,
+        meta: [
+          {
+            name: "description",
+            content: aboutMe.en.shortAboutText,
+          },
+          {
+            name: "og:image",
+            content: aboutMe.en.pictures[0],
+          },
+          {
+            name: 'twitter:card',
+            content: "large-summary",
+          },
+          {
+            name: "twitter:site",
+            content: "@asaharan812",
+          }
+        ],
+      }
+    }
+  ]
 };
 
 export const getMeta = (

@@ -5,6 +5,12 @@ export default function Playground() {
     <div>
       <h1 class="text-3xl font-bold mb-3">Playground</h1>
       <div class="gap-2 flex flex-wrap">
+        <Link class="link" href="/playground/twitter-cards/summary">
+          Twitter Summary Card
+        </Link>
+        <Link class="link" href="/playground/twitter-cards/summary_large_image">
+          Twitter Summary Large Card
+        </Link>
         <Link class="link" href="/playground/GPTTokenCount">
           Count GPT Tokens
         </Link>
