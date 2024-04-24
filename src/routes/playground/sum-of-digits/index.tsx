@@ -1,7 +1,7 @@
 import { component$, useComputed$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-function getDigitSum(num: number) {
+function getDigitSum(num: number): number {
   if (num < 10) {
     return num;
   }
