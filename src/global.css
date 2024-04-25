@@ -37,7 +37,7 @@ body {
   line-height: inherit;
 }
 .link{
-  @apply text-blue-500 underline hover:text-blue-700;
+  @apply text-blue-800 underline hover:text-blue-700;
 }
 
 .code {
