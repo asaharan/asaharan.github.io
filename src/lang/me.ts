@@ -87,8 +87,7 @@ export const aboutMeRaw: {
         },
       ],
       pictures: ["https://avatars.githubusercontent.com/u/11248242?v=4"],
-      avatar:
-        "https://s.gravatar.com/avatar/bcb973f8defde17c30b9292adbad136d?s=512",
+      avatar: "/images/amit-saharan-profile-picture.webp",
       technologies: [
         {
           name: "Qwik",

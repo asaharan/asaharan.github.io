@@ -23,7 +23,7 @@ export default component$(() => {
         height={"200"}
         class="rounded-3xl mb-4"
         alt={aboutMe.name}
-        loading="lazy"
+        loading="eager"
       />
       <p class="text-2xl mb-2">{aboutMe.name}</p>
       <p
@@ -43,7 +43,7 @@ export default component$(() => {
             key={tech.name}
           >
             <img
-              loading="lazy"
+              loading="eager"
               src={tech.icon}
               alt={tech.name}
               class="w-full h-full"

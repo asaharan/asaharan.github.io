@@ -22,7 +22,13 @@ export const WorkExperience = component$<WorkExperienceProps>(
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={logo} alt={company} class="rounded-md" height={72} />
+            <img
+              src={logo}
+              alt={company}
+              class="rounded-md"
+              height={72}
+              width={92}
+            />
           </a>
         </div>
         <div>
