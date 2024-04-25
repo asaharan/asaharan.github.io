@@ -23,6 +23,7 @@ export default component$(() => {
         height={"200"}
         class="rounded-3xl mb-4"
         alt={aboutMe.name}
+        loading="lazy"
       />
       <p class="text-2xl mb-2">{aboutMe.name}</p>
       <p
@@ -42,6 +43,7 @@ export default component$(() => {
             key={tech.name}
           >
             <img
+              loading="lazy"
               src={tech.icon}
               alt={tech.name}
               class="w-full h-full"
@@ -61,6 +63,7 @@ export default component$(() => {
             key={social.name}
           >
             <img
+              loading="lazy"
               src={social.icon}
               alt={social.name}
               class="w-[32px] h-[32px]"
