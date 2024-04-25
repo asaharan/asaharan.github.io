@@ -43,6 +43,7 @@ export const Topbar = component$(() => {
       <div class="container mx-auto flex justify-between align-middle h-12">
         <div class="md:hidden relative h-full">
           <button
+            aria-label={store.open ? "Close Menu" : "Open Menu"}
             onclick$={() => (store.open = !store.open)}
             class="focus:outline-none z-10 h-12 w-12 flex justify-center items-center"
           >
