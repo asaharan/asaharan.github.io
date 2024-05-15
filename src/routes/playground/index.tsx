@@ -14,6 +14,7 @@ const pages = [
   {
     title: "SVG Animations",
     description: "SVG Animations",
+    path: "/playground/animations",
   },
   {
     title: "Sum of Digits",

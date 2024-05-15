@@ -1,5 +1,5 @@
 import { $, component$, useComputed$, useSignal } from "@builder.io/qwik";
-import { unparse } from "papaparse";
+import Papa from "papaparse";
 
 function transformArrayToObject(input: any, config: string[]) {
   const acc: any = {};
@@ -71,7 +71,7 @@ export default component$(() => {
         return "Not an array of objects";
       }
       const jsonWithConfig = json.map((j) => applyConfig(j, configArray.value));
-      const csv = unparse(jsonWithConfig);
+      const csv = Papa.unparse(jsonWithConfig);
       console.log({ csv, jsonWithConfig, json });
       return csv;
     } catch (e) {

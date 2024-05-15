@@ -1,18 +1,22 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
 
 export default component$(() => {
-  const isExtended = useSignal();
-  const screensharePermission = useSignal();
+  const isExtended = useSignal<boolean>();
+  const screensharePermission = useSignal<boolean>();
   const numberOfScreens = useSignal<number>();
   const handleClick = $(async () => {
     try {
-      await navigator.permissions.query({ name: "window-management" });
-      isExtended.value = window.screen.isExtended;
-      const screenDetails = await window.getScreenDetails();
-      screensharePermission.value = true;
-      numberOfScreens.value = screenDetails.screens.length;
-      console.log("Permission granted");
-      console.log(screenDetails);
+      if (typeof window !== "undefined") {
+        await (navigator.permissions.query as any)({
+          name: "window-management",
+        });
+        isExtended.value = (window.screen as any).isExtended;
+        const screenDetails = await (window as any).getScreenDetails();
+        screensharePermission.value = true;
+        numberOfScreens.value = screenDetails.screens.length;
+        console.log("Permission granted");
+        console.log(screenDetails);
+      }
     } catch (err) {
       screensharePermission.value = false;
       console.error("Permission denied", err);
