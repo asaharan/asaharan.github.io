@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG Line Animation</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+      }
+
+      .left-box,
+      .right-box {
+        width: 50px;
+        height: 50px;
+      }
+
+      .left-box {
+        background-color: rgb(132, 255, 0);
+      }
+
+      .right-box {
+        background-color: blue;
+      }
+
+      .line-container {
+        overflow: visible;
+      }
+
+      #line {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: drawLine 3s forwards;
+      }
+
+      @keyframes drawLine {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-box"></div>
+      <svg
+        class="line-container"
+        width="500"
+        height="100"
+        viewBox="0 0 500 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="grad1" x1="0%" x2="100%">
+            <stop offset="0%" stop-color="yellow" />
+            <stop offset="100%" stop-color="red" />
+          </linearGradient>
+        </defs>
+
+        <path
+          d="M134,1
+                L134,32
+                Q134,52
+                114,52
+                L1,52"
+          fill="none"
+          stroke-width="2"
+          stroke="url(#grad1)"
+        />
+      </svg>
+
+      <div class="right-box"></div>
+    </div>
+    <svg
+      width="443"
+      height="514"
+      viewBox="0 0 443 514"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g opacity="0.7">
+        <path
+          d="M0 1H227.979C239.577 1 248.979 10.402 248.979 22V119C248.979 130.598 258.381 140 269.979 140H419"
+          stroke="url(#paint0_linear_3605_59948)"
+          stroke-opacity="0.5"
+          stroke-width="2"
+        />
+        <path
+          d="M0 76H88.3645C99.9625 76 109.365 85.402 109.365 97V178C109.365 189.598 118.767 199 130.365 199H278"
+          stroke="url(#paint1_linear_3605_59948)"
+          stroke-opacity="0.5"
+          stroke-width="2"
+        />
+        <path
+          d="M0 34H51.3852C62.9831 34 72.3851 43.402 72.3851 55V147C72.3851 158.598 81.7872 168 93.3851 168H361.5"
+          stroke="url(#paint2_linear_3605_59948)"
+          stroke-opacity="0.5"
+          stroke-width="2"
+        />
+        <path
+          d="M344 316L163.016 316C151.418 316 142.016 325.402 142.016 337V433C142.016 444.598 132.614 454 121.016 454H-8.55327e-06"
+          stroke="url(#paint3_linear_3605_59948)"
+          stroke-opacity="0.5"
+          stroke-width="2"
+        />
+        <path
+          d="M443 354L114.207 354C102.609 354 93.2069 363.402 93.2069 375V492C93.2069 503.598 83.8049 513 72.2069 513H1.54972e-06"
+          stroke="url(#paint4_linear_3605_59948)"
+          stroke-opacity="0.5"
+          stroke-width="2"
+        />
+        <path
+          d="M301 237L74.855 237C63.257 237 53.855 246.402 53.855 258V375C53.855 386.598 44.453 396 32.855 396H-12"
+          stroke="url(#paint5_linear_3605_59948)"
+          stroke-opacity="0.5"
+          stroke-width="2"
+        />
+      </g>
+      <defs>
+        <linearGradient
+          id="paint0_linear_3605_59948"
+          x1="-135.341"
+          y1="48.757"
+          x2="-90.9976"
+          y2="243.281"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#AC5DD9" />
+          <stop offset="1" stop-color="#004FC4" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_3605_59948"
+          x1="-89.7965"
+          y1="118.26"
+          x2="-39.402"
+          y2="284.016"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#AC5DD9" />
+          <stop offset="1" stop-color="#004FC4" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_3605_59948"
+          x1="-116.768"
+          y1="80.0391"
+          x2="-69.5817"
+          y2="265.292"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#AC5DD9" />
+          <stop offset="1" stop-color="#004FC4" />
+        </linearGradient>
+        <linearGradient
+          id="paint3_linear_3605_59948"
+          x1="455.115"
+          y1="363.413"
+          x2="403.067"
+          y2="552.226"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#AC5DD9" />
+          <stop offset="1" stop-color="#004FC4" />
+        </linearGradient>
+        <linearGradient
+          id="paint4_linear_3605_59948"
+          x1="586.093"
+          y1="408.628"
+          x2="531.673"
+          y2="629.283"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#AC5DD9" />
+          <stop offset="1" stop-color="#004FC4" />
+        </linearGradient>
+        <linearGradient
+          id="paint5_linear_3605_59948"
+          x1="402.102"
+          y1="291.628"
+          x2="329.269"
+          y2="500.281"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#AC5DD9" />
+          <stop offset="1" stop-color="#004FC4" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </body>
+</html>

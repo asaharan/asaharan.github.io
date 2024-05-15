@@ -2,6 +2,20 @@ import { ToolCard } from "~/components/ToolCard";
 
 const pages = [
   {
+    title: "Window Management API",
+    description: "Window Management API testing",
+    path: "/playground/window-management",
+  },
+  {
+    title: "JSON to CSV Converter",
+    description: "Convert JSON to CSV",
+    path: "/playground/json-to-csv",
+  },
+  {
+    title: "SVG Animations",
+    description: "SVG Animations",
+  },
+  {
     title: "Sum of Digits",
     description: "Sum of Digits",
     path: "/playground/sum-of-digits",
