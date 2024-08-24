@@ -10,7 +10,7 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 const description = `This page is designed to capture and display screenshots from the user's screen. It allows the user to share their screen, capture a screenshot of the current display, and then view or close the captured images. The captured images are processed in various formats, qualities, and sizes, and are organized for display based on their dimensions. Users can interact with the screen captures by clicking on them to view an enlarged version or close them.
 You can compare the quality and size of the images captured in different formats and sizes.`;
 export default component$(() => {
-  const videoRef = useSignal<HTMLVideoElement | null>(null);
+  const videoRef = useSignal<HTMLVideoElement>();
   const selectedImageSrc = useSignal<string | null>(null);
   const images = useStore({
     list: [] as {
@@ -90,14 +90,24 @@ export default component$(() => {
   });
 
   const groups = useComputed$(() => {
-    const grouped = new Map();
+    const grouped = new Map<
+      string,
+      Array<{
+        src: string;
+        type: string;
+        quality: number;
+        size: number;
+        width: number;
+        height: number;
+      }>
+    >();
 
     images.list.forEach(({ src, type, quality, size, width, height }) => {
       const dimension = `${width}x${height}`;
       if (!grouped.has(dimension)) {
         grouped.set(dimension, []);
       }
-      grouped.get(dimension).push({ src, type, quality, size, width, height });
+      grouped.get(dimension)?.push({ src, type, quality, size, width, height });
     });
 
     return grouped;
@@ -163,7 +173,7 @@ export default component$(() => {
       >
         Share Screen
       </button>
-      <video ref={videoRef} autoPlay style={{ maxWidth: "400px" }}></video>
+      <video ref={videoRef} autoplay style={{ maxWidth: "400px" }}></video>
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick$={captureImage}
@@ -180,6 +190,8 @@ export default component$(() => {
                 .map(({ src, type, quality, size, width, height }) => (
                   <figure key={`${quality}-${size}-${width}-${height}`}>
                     <img
+                      width={200}
+                      height={200}
                       src={src}
                       alt={`${width}x${height}`}
                       style={{ maxWidth: "100%" }}
