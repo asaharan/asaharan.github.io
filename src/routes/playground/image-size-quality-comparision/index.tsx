@@ -54,7 +54,7 @@ export default component$(() => {
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const types = ["image/jpeg", "image/png", "image/webp"];
-    const qualities = [1, 0.75, 0.5, 0.25];
+    const qualities = [1, 0.75, 0.5, 0.25, 0.1, 0.05, 0];
     const sizes = [1, 0.75, 0.5];
 
     types.forEach((type) => {
