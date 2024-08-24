@@ -95,6 +95,11 @@ export const aboutMeRaw: {
           url: "https://qwik.builder.io",
         },
         {
+          name: "Bun",
+          icon: "https://cdn.svgporn.com/logos/bun.svg",
+          url: "https://bun.sh",
+        },
+        {
           name: "Svelte",
           icon: "https://cdn.svgporn.com/logos/svelte-icon.svg",
           url: "https://svelte.dev",

@@ -1,3 +1,4 @@
+import type { DocumentHead } from "@builder.io/qwik-city";
 import { ToolCard } from "~/components/ToolCard";
 
 const pages = [
@@ -5,37 +6,44 @@ const pages = [
     title: "Window Management API",
     description: "Window Management API testing",
     path: "/playground/window-management",
+    position: 0,
   },
   {
     title: "JSON to CSV Converter",
     description: "Convert JSON to CSV",
     path: "/playground/json-to-csv",
+    position: 4,
   },
   {
     title: "SVG Animations",
     description: "SVG Animations",
     path: "/playground/animations",
+    position: 4,
   },
   {
     title: "Sum of Digits",
     description: "Sum of Digits",
     path: "/playground/sum-of-digits",
+    position: 8,
   },
   {
     title: "Convert text to UPPERCASE",
     description: "Convert text to UPPERCASE",
     path: "/playground/convert-text-to-uppercase",
+    position: 6,
   },
   {
     title: "Convert text to lowercase",
     description: "Convert text to lowercase",
     path: "/playground/convert-text-to-lowercase",
+    position: 5,
   },
 
   {
     title: "Count number of chars",
     description: "Count number of characters in a string",
     path: "/playground/count-number-of-characters",
+    position: 4,
   },
   {
     title: "Twitter Summary Card",
@@ -51,6 +59,7 @@ const pages = [
     title: "Count GPT Tokens",
     description: "Count GPT Tokens",
     path: "/playground/GPTTokenCount",
+    position: 3,
   },
   {
     title: "ChatGPT Experiment",
@@ -66,13 +75,19 @@ const pages = [
     title: "TweetNaCl",
     description: "TweetNaCl",
     path: "/playground/tweetnacl",
+    position: 2,
   },
   {
     title: "Bcrypt",
     description: "Bcrypt",
     path: "/playground/bcrypt",
+    position: 1,
   },
-];
+].sort((a, b) => {
+  const aPosition = a.position ?? Infinity;
+  const bPosition = b.position ?? Infinity;
+  return aPosition - bPosition;
+});
 
 export default function Playground() {
   return (
@@ -91,3 +106,14 @@ export default function Playground() {
     </div>
   );
 }
+
+export const head: DocumentHead = {
+  title: "Playground - Demos and Experiments",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Explore various demos and experiments. Discover useful tools for developers.",
+    },
+  ],
+};
