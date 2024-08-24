@@ -72,7 +72,7 @@ export default component$(() => {
       </div>
       <div class="flex flex-col">
         {messages.value.map((message, index) => (
-          <div class="flex flex-col border-b p-2 gap-1">
+          <div key={index} class="flex flex-col border-b p-2 gap-1">
             <div>
               <select
                 value={message.role}
