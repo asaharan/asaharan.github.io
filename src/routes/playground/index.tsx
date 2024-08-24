@@ -3,6 +3,12 @@ import { ToolCard } from "~/components/ToolCard";
 
 const pages = [
   {
+    title: "Screenshare Image Quality",
+    description: "Screenshare testing and image quality and size",
+    path: "/playground/image-size-quality-comparision",
+    position: 0,
+  },
+  {
     title: "Window Management API",
     description: "Window Management API testing",
     path: "/playground/window-management",
