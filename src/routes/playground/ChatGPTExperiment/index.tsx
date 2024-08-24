@@ -25,28 +25,23 @@ export default component$(() => {
     }
   });
   useTask$(async () => {
-    const response = await fetch(
-      "https://api.openai.com/v1/engines/davinci/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token.value}`,
-        },
-        body: JSON.stringify({
-          prompt: "This is a test",
-          max_tokens: 5,
-          temperature: 0.9,
-          top_p: 1,
-          n: 1,
-          stream: false,
-          logprobs: null,
-          stop: ["\n"],
-        }),
-      }
-    );
-    const json = await response.json();
-    console.log(json);
+    await fetch("https://api.openai.com/v1/engines/davinci/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token.value}`,
+      },
+      body: JSON.stringify({
+        prompt: "This is a test",
+        max_tokens: 5,
+        temperature: 0.9,
+        top_p: 1,
+        n: 1,
+        stream: false,
+        logprobs: null,
+        stop: ["\n"],
+      }),
+    });
   });
   return (
     <div>

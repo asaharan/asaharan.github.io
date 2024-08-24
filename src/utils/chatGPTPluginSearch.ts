@@ -1,4 +1,4 @@
-import { ChatGPTPluginItem } from "~/data/ChatGPTExtensionList";
+import { type ChatGPTPluginItem } from "~/data/ChatGPTExtensionList";
 
 export function matchSearchQuery(
   query: string,

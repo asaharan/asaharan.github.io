@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import "./style.css";
+import AnimationBg from "~/media/animation-bg.svg";
 
 export default component$(() => {
   return (
@@ -9,7 +10,7 @@ export default component$(() => {
         alt="Gradient"
         width="1200"
         height="1200"
-        src="/images/final.svg"
+        src={AnimationBg}
       />
       <svg
         class="lines-entering z-10"

@@ -1,5 +1,5 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
-import { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const isExtended = useSignal<boolean>();
@@ -16,7 +16,6 @@ export default component$(() => {
         const screenDetails = await window.getScreenDetails();
         screensharePermission.value = true;
         numberOfScreens.value = screenDetails.screens.length;
-        console.log(screenDetails.screens);
         displays.value = screenDetails.screens.map((screen) => {
           return {
             label: screen.label,

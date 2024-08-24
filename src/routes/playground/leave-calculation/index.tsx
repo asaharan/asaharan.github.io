@@ -1,6 +1,6 @@
 import { $, component$, useComputed$, useSignal } from "@builder.io/qwik";
 import Papa from "papaparse";
-import { Leave, getExtraAFKNotApplied } from "~/utils/leave";
+import { type Leave, getExtraAFKNotApplied } from "~/utils/leave";
 
 const afkFormat =
   "Emp ID,Employee Name,Applied leave on GreytHR,Reason,Number of Days,Start Date,End Date";
@@ -47,7 +47,6 @@ export default component$(() => {
     }
   });
   const extraInAFK = useComputed$(() => {
-    console.log(parsedAFK.value, parsedApplication.value);
     dataByEmpId.value = parsedAFK.value.reduce((acc, leave) => {
       acc[leave.emp_id] = { name: leave.employee_name };
       return acc;

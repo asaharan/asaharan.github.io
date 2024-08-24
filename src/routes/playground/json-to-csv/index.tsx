@@ -3,7 +3,6 @@ import Papa from "papaparse";
 
 function transformArrayToObject(input: any, config: string[]) {
   const acc: any = {};
-  console.log("tranfprmonm", input, config);
   return config.reduce((acc, key, index) => {
     acc[key] = input[index];
     return acc;
@@ -34,12 +33,10 @@ function parseConfig(config: string): Config[] {
 function applyConfig(input: any, configs: Config[]) {
   return configs.reduce((input, config) => {
     if (config.type === "arrayToObject") {
-      console.log(input, config.key, "getting key");
       const transformedData = transformArrayToObject(
         input[config.key],
         config.config
       );
-      console.log("transformedData", transformedData);
       return {
         ...input,
         ...transformedData,
@@ -72,7 +69,6 @@ export default component$(() => {
       }
       const jsonWithConfig = json.map((j) => applyConfig(j, configArray.value));
       const csv = Papa.unparse(jsonWithConfig);
-      console.log({ csv, jsonWithConfig, json });
       return csv;
     } catch (e) {
       console.error(e);

@@ -19,7 +19,6 @@ const DisplayKey = component$(({ k }: { k: string | null }) => {
     <span>
       <span
         onClick$={() => {
-          console.log(k);
           if (k) {
             navigator.clipboard.writeText(k);
             hasCopied.value = true;
@@ -66,7 +65,6 @@ export default component$(() => {
     const clientKeyPair = generateKeyPair();
     store.client.publicKey = clientKeyPair.publicKey;
     store.client.privateKey = clientKeyPair.privateKey;
-    console.log("clientKeyPair", clientKeyPair);
     const serverKeyPair = generateKeyPair();
     store.server.publicKey = serverKeyPair.publicKey;
     store.server.privateKey = serverKeyPair.privateKey;

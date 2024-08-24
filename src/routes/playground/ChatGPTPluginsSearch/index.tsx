@@ -47,9 +47,9 @@ export default component$(() => {
       <div>
         <span>Categories: </span>
         <div class="flex gap-2">
-          {categories.map((category) => {
+          {categories.map((category, index) => {
             return (
-              <span class="p-2 inline-flex gap-1">
+              <span key={index} class="p-2 inline-flex gap-1">
                 <input
                   type="radio"
                   name="category"
@@ -74,6 +74,8 @@ export default component$(() => {
               class="border shadow rounded-xl p-3 flex gap-2"
             >
               <img
+                width={"96"}
+                height={"96"}
                 src={plugin.manifest.logo_url}
                 class="w-24 rounded-2xl"
                 loading={index < 10 ? "eager" : "lazy"}
@@ -82,9 +84,10 @@ export default component$(() => {
                 <div class="flex gap-2">
                   <h3 class="text-xl">{plugin.manifest.name_for_human}</h3>
                   <div>
-                    {plugin.categories.map((category) => {
+                    {plugin.categories.map((category, index) => {
                       return (
                         <span
+                          key={index}
                           class={clsx(
                             "inline-flex gap-1 bg-gray-100 rounded-md p-1 text-xs",
                             {

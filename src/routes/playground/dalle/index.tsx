@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { $, component$, useSignal, useTask$ } from "@builder.io/qwik";
 import OpenAI from "openai";
 
 export default component$(() => {
@@ -7,7 +7,7 @@ export default component$(() => {
   const imageUrl = useSignal("");
   const isGenerating = useSignal(false);
   const isKeyVisible = useSignal(false);
-  useVisibleTask$((track) => {
+  useTask$((track) => {
     track.track(() => token.value);
     if (token.value) {
       localStorage.setItem("dalle-token", token.value);
