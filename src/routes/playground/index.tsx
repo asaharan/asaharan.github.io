@@ -3,6 +3,21 @@ import { ToolCard } from "~/components/ToolCard";
 
 const pages = [
   {
+    title: "Wake Lock API",
+    description: "Device should stay awake",
+    path: "/playground/wake-lock",
+  },
+  {
+    title: "Screenshare with audio",
+    description: "Record screen along with audio",
+    path: "/playground/screenshare-with-audio",
+  },
+  {
+    title: "Deepgram Real-time transcription for Video File",
+    description: "Real-time transcription for Video File",
+    path: "/playground/deepgram-real-time-transcription-of-a-video-file",
+  },
+  {
     title: "Screenshare Image Quality",
     description: "Screenshare testing and image quality and size",
     path: "/playground/image-size-quality-comparision",
@@ -90,8 +105,8 @@ const pages = [
     position: 1,
   },
 ].sort((a, b) => {
-  const aPosition = a.position ?? Infinity;
-  const bPosition = b.position ?? Infinity;
+  const aPosition = a.position ?? Number.POSITIVE_INFINITY;
+  const bPosition = b.position ?? Number.POSITIVE_INFINITY;
   return aPosition - bPosition;
 });
 
