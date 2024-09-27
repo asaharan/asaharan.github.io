@@ -3,10 +3,8 @@ import {
   type NoSerialize,
   component$,
   noSerialize,
-  useOnDocument,
   useSignal,
   useTask$,
-  useVisibleTask$,
 } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
