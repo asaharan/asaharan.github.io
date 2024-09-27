@@ -17,7 +17,7 @@ export default component$(() => {
     chunks: [] as NoSerialize<Blob>[],
   });
 
-  const videoRef = useSignal<HTMLVideoElement | null>(null);
+  const videoRef = useSignal<HTMLVideoElement>();
 
   const startScreenShare = $(async () => {
     try {
@@ -108,7 +108,7 @@ export default component$(() => {
 
       {state.isRecording && (
         <div>
-          <video ref={videoRef} autoPlay muted />
+          <video ref={videoRef} autoplay muted />
           <button type="button" onClick$={stopRecording}>
             Stop Recording
           </button>

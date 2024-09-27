@@ -1,6 +1,6 @@
 import type { Signal } from "@builder.io/qwik";
-import { component$, useStore, useSignal, $ } from "@builder.io/qwik";
-import { createClient, LiveTranscriptionEvents } from "@deepgram/sdk";
+import { $, component$, useSignal, useStore } from "@builder.io/qwik";
+import { LiveTranscriptionEvents, createClient } from "@deepgram/sdk";
 
 export const DeepgramRealTimeTranscription = component$(
   ({ apiKey }: { apiKey: Signal<string> }) => {
@@ -23,7 +23,7 @@ export const DeepgramRealTimeTranscription = component$(
         };
 
         audio.onerror = (error) => {
-          reject("Error processing file: " + error.message);
+          reject(`Error processing file: ${error}`);
         };
       });
     });

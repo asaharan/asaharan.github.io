@@ -1,16 +1,16 @@
 import {
   $,
   component$,
-  useStore,
-  useSignal,
   useComputed$,
+  useSignal,
+  useStore,
 } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 const description = `This page is designed to capture and display screenshots from the user's screen. It allows the user to share their screen, capture a screenshot of the current display, and then view or close the captured images. The captured images are processed in various formats, qualities, and sizes, and are organized for display based on their dimensions. Users can interact with the screen captures by clicking on them to view an enlarged version or close them.
 You can compare the quality and size of the images captured in different formats and sizes.`;
 export default component$(() => {
-  const videoRef = useSignal<HTMLVideoElement>();
+  const videoRef = useSignal<HTMLVideoElement | undefined>();
   const selectedImageSrc = useSignal<string | null>(null);
   const images = useStore({
     list: [] as {
@@ -54,7 +54,7 @@ export default component$(() => {
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     const types = ["image/jpeg", "image/png", "image/webp"];
-    const qualit0.1, 0.05,0es = [1, 0.75, 0.5, 0.25, 0.1, 0.05, 0];
+    const qualities = [1, 0.75, 0.5, 0.25, 0.1, 0.05, 0];
     const sizes = [1, 0.75, 0.5];
 
     types.forEach((type) => {
@@ -146,6 +146,7 @@ export default component$(() => {
             onClick$={(event) => event.stopPropagation()}
           >
             <button
+              type="button"
               style={{
                 position: "absolute",
                 top: "10px",
@@ -155,7 +156,9 @@ export default component$(() => {
                 cursor: "pointer",
                 fontSize: "16px",
               }}
-              onClick$={() => (selectedImageSrc.value = null)}
+              onClick$={() => {
+                selectedImageSrc.value = null;
+              }}
             >
               Close
             </button>
@@ -163,18 +166,22 @@ export default component$(() => {
               src={selectedImageSrc.value}
               style={{ maxWidth: "100%", maxHeight: "80vh" }}
               alt="Selected"
+              width="100"
+              height={"100"}
             />
           </div>
         </div>
       )}
       <button
+        type="button"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick$={captureScreen}
       >
         Share Screen
       </button>
-      <video ref={videoRef} autoplay style={{ maxWidth: "400px" }}></video>
+      <video ref={videoRef} autoplay style={{ maxWidth: "400px" }} />
       <button
+        type="button"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick$={captureImage}
       >
