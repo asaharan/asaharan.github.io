@@ -67,6 +67,12 @@ const pages = [
     position: 4,
   },
   {
+    title: "Count unique items",
+    description: "Count unique items",
+    path: "/playground/count-unique-items",
+    position: 4,
+  },
+  {
     title: "Twitter Summary Card",
     description: "Generate Twitter Summary Card",
     path: "/playground/twitter-cards/summary",

@@ -11,7 +11,7 @@ export default component$(() => {
   });
   return (
     <div class="mainBody">
-      <h3>Convert string to lowercase</h3>
+      <h3>Count number of characters in given text</h3>
       <div class="title">Paste your text below</div>
       <textarea
         bind:value={input}
