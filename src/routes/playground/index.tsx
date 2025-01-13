@@ -80,6 +80,7 @@ const pages = [
 		position: 8,
 		icon: <MatExposureZeroOutlined />,
 		deprecated: true,
+		category: "Tools",
 	},
 	{
 		title: "Convert text to UPPERCASE",
@@ -173,7 +174,7 @@ const pages = [
 
 const groups = pages.reduce(
 	(acc, page) => {
-		const category = page.category ?? "Other";
+		const category = page.deprecated ? "Legacy" : (page.category ?? "Other");
 		if (!acc[category]) {
 			acc[category] = [];
 		}
@@ -197,34 +198,19 @@ export default component$(() => {
 					<div key={title}>
 						<h3 class="text-2xl font-bold mb-3">{title}</h3>
 						<div class="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-							{pages
-								.filter((i) => !i.deprecated)
-								.map((page) => (
-									<ToolCard
-										key={page.path}
-										path={page.path}
-										title={page.title}
-										description={page.description}
-										icon={page.icon}
-										category={page.category}
-									/>
-								))}
+							{pages.map((page) => (
+								<ToolCard
+									key={page.path}
+									path={page.path}
+									title={page.title}
+									description={page.description}
+									icon={page.icon}
+									category={page.category}
+								/>
+							))}
 						</div>
 					</div>
 				))}
-			</div>
-			<h2 class="text-2xl font-bold mt-8 mb-3">Deprecated</h2>
-			<div class="gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-				{pages
-					.filter((i) => i.deprecated)
-					.map((page) => (
-						<ToolCard
-							key={page.path}
-							path={page.path}
-							title={page.title}
-							description={page.description}
-						/>
-					))}
 			</div>
 		</div>
 	);
