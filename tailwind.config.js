@@ -1,12 +1,12 @@
-import { fontFamily } from "tailwindcss/defaultTheme";
-
 /** @type {import('tailwindcss').Config} */
-export const content = ["./src/**/*.{js,ts,jsx,tsx,mdx}"];
-export const theme = {
-  extend: {
-    fontFamily: {
-      sans: ["Rubik", fontFamily.sans],
-    },
-  },
+export default {
+	content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+	theme: {
+		extend: {
+			fontFamily: {
+				sans: ["Rubik"],
+			},
+		},
+	},
+	plugins: [],
 };
-export const plugins = [];
