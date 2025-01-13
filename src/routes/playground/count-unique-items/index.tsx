@@ -8,7 +8,7 @@ export default component$(() => {
 	const input = useSignal("");
 	const output = useComputed$(() => {
 		const text = input.value;
-		if (!text) return 0;
+		if (!text) return new Set();
 		const items = text.split("s");
 		const uniqueItems = new Set(items);
 		return uniqueItems;
