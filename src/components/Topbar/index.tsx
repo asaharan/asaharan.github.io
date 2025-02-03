@@ -1,8 +1,8 @@
-import { component$, useStore, useTask$ } from "@builder.io/qwik";
+import { component$, useStore } from "@builder.io/qwik";
 import { LanguageSelector } from "../LanguageSelector";
 import { TopbarLink } from "./TopbarLink";
 import clsx from "clsx";
-import MenuIcon from "./MenuIcon";
+import MenuIcon from "./menu.svg";
 
 const links = [
 	{
@@ -58,7 +58,13 @@ export const Topbar = component$(() => {
 						}}
 						class="focus:outline-none z-10 h-12 w-12 flex justify-center items-center"
 					>
-						<MenuIcon />
+						<img
+							src={MenuIcon}
+							alt="Menu"
+							class="h-6 w-6"
+							height={24}
+							width={24}
+						/>
 					</button>
 					<div
 						class={clsx(

@@ -1,11 +1,5 @@
 import type { PropFunction } from "@builder.io/qwik";
-import {
-	component$,
-	isServer,
-	useComputed$,
-	useSignal,
-	useTask$,
-} from "@builder.io/qwik";
+import { component$, isServer, useSignal, useTask$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 
 interface TopbarLinkProps {

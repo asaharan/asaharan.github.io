@@ -2,7 +2,7 @@ import { component$, useSignal, useTask$, $ } from "@builder.io/qwik";
 import bcrypt from "bcryptjs";
 import { CopyButton } from "~/components/Copy";
 import { MatPasswordOutlined } from "@qwikest/icons/material";
-import { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
 	const rounds = useSignal("8");
