@@ -42,12 +42,6 @@ export default component$(() => {
 							}}
 						>
 							<span>{tool.title}</span>
-							<span
-								aria-hidden="true"
-								class={`absolute inset-x-0 bottom-0 h-0.5 ${
-									isActive ? "bg-indigo-500" : "bg-transparent"
-								}`}
-							/>
 						</Link>
 					);
 				})}

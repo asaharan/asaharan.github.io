@@ -107,7 +107,7 @@ export default component$(
 				) : null}
 				<div
 					class={[
-						"grid grid-cols-1 gap-4 md:sticky bottom-0 z-10 bg-white mt-2",
+						"grid grid-cols-1 gap-4 md:sticky bottom-0 z-10 bg-white mt-2 mb-4",
 						{
 							"md:grid-cols-3": store.hasActiveCount,
 							"md:grid-cols-4": !store.hasActiveCount,
