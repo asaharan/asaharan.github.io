@@ -60,7 +60,8 @@ export const aboutMeRaw: {
 			name: "Amit Saharan",
 			shortAbout:
 				"Director of Technology [Masai School](https://masaischool.com), Co-founder [Prepleaf](https://www.prepleaf.com)",
-			about: `I am currently working at [Masai School](https://masaischool.com) as Director of Technology. I am also a co-founder of [Prepleaf](https://www.prepleaf.com). I have been working in the software industry for more than 6 years. I love creating beatiful and scalable products.`,
+			about:
+				"I am currently working at [Masai School](https://masaischool.com) as Director of Technology. I am also a co-founder of [Prepleaf](https://www.prepleaf.com). I have been working in the software industry for more than 6 years. I love creating beatiful and scalable products.",
 			socialLinks: [
 				{
 					name: "Twitter",
@@ -150,7 +151,7 @@ export const aboutMeRaw: {
 				{
 					company: "Masai School",
 					role: "Director of Technology",
-					startDate: "April 2022",
+					startDate: "December 2021",
 					endDate: "Present",
 					description:
 						"Masai School is a career focused coding school. We offer 30 weeks of intensive coding bootcamp where we train students to become software engineers. We have trained more than 1000 students so far.",
