@@ -2,6 +2,7 @@ import { component$, useSignal, useTask$, $ } from "@builder.io/qwik";
 import bcrypt from "bcryptjs";
 import { CopyButton } from "~/components/Copy";
 import { MatPasswordOutlined } from "@qwikest/icons/material";
+import { DocumentHead } from "@builder.io/qwik-city";
 
 export default component$(() => {
 	const rounds = useSignal("8");
@@ -139,3 +140,14 @@ export default component$(() => {
 		</div>
 	);
 });
+
+export const head: DocumentHead = {
+	title: "Bcrypt Hash Generator",
+	meta: [
+		{
+			name: "description",
+			content:
+				"Generate secure bcrypt hashes for your passwords with customizable rounds. Create strong random passwords and hash them instantly.",
+		},
+	],
+};
