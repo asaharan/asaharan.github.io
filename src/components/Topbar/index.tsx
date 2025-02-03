@@ -14,6 +14,10 @@ const links = [
 		href: "/playground",
 	},
 	{
+		text: "String tools",
+		href: "/playground/string-tools",
+	},
+	{
 		text: "JEE Ready",
 		href: "https://jeeready.com",
 		isExternal: true,
