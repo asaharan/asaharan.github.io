@@ -7,11 +7,13 @@ import clsx from "clsx";
 
 interface CopyButtonProps {
 	content: string;
-	class: string;
+	class?: string;
+	size?: "sm" | "md" | "lg";
+	variant?: "primary" | "secondary";
 }
 
 export const CopyButton = component$<CopyButtonProps>(
-	({ content, class: className }) => {
+	({ content, class: className, size, variant }) => {
 		const isCopied = useSignal(false);
 
 		const copyToClipboard = $(async () => {
@@ -31,8 +33,20 @@ export const CopyButton = component$<CopyButtonProps>(
 			<button
 				onClick$={copyToClipboard}
 				class={clsx(
-					"inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 gap-1",
-					"bg-primary-500 text-white hover:bg-primary-700",
+					"inline-flex items-center rounded-md font-medium transition-colors duration-200 gap-1",
+					// Size variations
+					{
+						"px-2 py-1 text-xs": size === "sm",
+						"px-4 py-2 text-sm": size === "md",
+						"px-6 py-3 text-base": size === "lg",
+					},
+					// Variant variations
+					{
+						"bg-primary-500 text-white hover:bg-primary-700":
+							variant === "primary",
+						"bg-gray-200 text-gray-900 hover:bg-gray-300":
+							variant === "secondary",
+					},
 					className,
 				)}
 				type="button"
