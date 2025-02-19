@@ -1,6 +1,9 @@
 import { type JSXOutput, component$, useComputed$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
-import { PlaygroundPageItem, playgroundItemGroups } from "~/data/tools.config";
+import {
+	type PlaygroundPageItem,
+	playgroundItemGroups,
+} from "~/data/tools.config";
 
 interface ToolCardProps {
 	title: string;

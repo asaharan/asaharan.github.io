@@ -10,6 +10,7 @@ import {
 	MatLockOutlined,
 	MatPasswordOutlined,
 	MatScreenshotOutlined,
+	MatShortcutOutlined,
 	MatWindowOutlined,
 } from "@qwikest/icons/material";
 import LowercaseSvg from "~/media/lowercase.svg";
@@ -189,6 +190,14 @@ const playgroundItems: PlaygroundPageItem[] = [
 		position: 0,
 		icon: MatPasswordOutlined,
 		category: "Tools",
+	},
+	{
+		title: "Zed Shortcuts",
+		description: "Shortcuts that I use in Zed",
+		path: "/playground/zed-shortcuts",
+		position: 0,
+		icon: MatShortcutOutlined,
+		category: "Guide",
 	},
 ].sort((a, b) => {
 	const aPosition = a.position ?? Number.POSITIVE_INFINITY;
