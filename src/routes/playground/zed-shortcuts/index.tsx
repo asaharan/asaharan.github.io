@@ -130,7 +130,7 @@ export default component$(() => {
 
 	return (
 		<div class="lg:p-2">
-			<div class="flex gap-2 mb-4">
+			<div class="flex gap-4 mb-4">
 				<div class="aspect-square w-12">
 					<img src="/icons/zed.png" width={48} height={48} alt="Zed Logo" />
 				</div>
@@ -146,7 +146,7 @@ export default component$(() => {
 				</div>
 			</div>
 
-			<div class="mb-2">
+			<div class="mb-1">
 				<input
 					type="text"
 					placeholder="Search shortcuts..."
