@@ -11,6 +11,7 @@ import {
 	MatPasswordOutlined,
 	MatScreenshotOutlined,
 	MatShortcutOutlined,
+	MatTimerOutlined,
 	MatWindowOutlined,
 } from "@qwikest/icons/material";
 import LowercaseSvg from "~/media/lowercase.svg";
@@ -33,6 +34,14 @@ export interface PlaygroundPageItem {
 }
 
 const playgroundItems: PlaygroundPageItem[] = [
+	{
+		title: "Timer",
+		description: "Start, pause, and reset a timer",
+		path: "/playground/timer",
+		icon: MatTimerOutlined,
+		position: 1,
+		category: "Tools",
+	},
 	{
 		title: "Wake Lock API",
 		description: "Device should stay awake",
