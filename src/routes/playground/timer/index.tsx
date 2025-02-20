@@ -59,56 +59,68 @@ export default component$(() => {
 	});
 
 	return (
-		<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6 border">
-			<h1 class="text-2xl font-bold text-center mb-8">Timer</h1>
-
-			<div
-				class={[
-					"flex gap-4 justify-center mb-8",
-					{
-						hidden: isRunning.value,
-					},
-				]}
-			>
-				<div class="flex flex-col">
-					<label for="minutes" class="text-sm text-gray-600 mb-1">
-						Minutes
-					</label>
-					<input
-						type="number"
-						min="0"
-						value={minutes.value}
-						onInput$={(e) => {
-							minutes.value = +(e.target as HTMLInputElement).value;
-						}}
-						id="minutes"
-						class="w-20 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-						disabled={isRunning.value}
-					/>
+		<div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg overflow-hidden md:max-w-2xl p-8 border border-gray-100">
+			<div>
+				<h1 class="text-3xl font-bold text-center mb-2 text-gray-800">Timer</h1>
+				<h2
+					class={[
+						"text-lg font-medium text-center mb-6 text-gray-700",
+						{
+							hidden: isRunning.value,
+						},
+					]}
+				>
+					Select number of minutes and seconds to start the timer.
+				</h2>
+				<div
+					class={[
+						"flex gap-8 justify-center mb-10 px-4",
+						{ hidden: isRunning.value },
+					]}
+				>
+					<div class="flex flex-col">
+						<label for="minutes" class="text-sm font-medium text-gray-700 mb-2">
+							Minutes
+						</label>
+						<input
+							type="number"
+							min="0"
+							value={minutes.value}
+							onInput$={(e) => {
+								minutes.value = +(e.target as HTMLInputElement).value;
+							}}
+							id="minutes"
+							class="w-24 px-4 py-3 border shadow-md border-gray-300 rounded-xl text-lg font-medium text-gray-800 focus:outline-none focus:ring-4 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-gray-400 bg-gray-50"
+							disabled={isRunning.value}
+						/>
+					</div>
+					<div class="flex flex-col">
+						<label for="seconds" class="text-sm font-medium text-gray-700 mb-2">
+							Seconds
+						</label>
+						<input
+							type="number"
+							min="0"
+							max="59"
+							value={seconds.value}
+							onInput$={(e) => {
+								seconds.value = +(e.target as HTMLInputElement).value;
+							}}
+							id="seconds"
+							class="w-24 px-4 py-3 border shadow-md border-gray-300 rounded-xl text-lg font-medium text-gray-800 focus:outline-none focus:ring-4 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 hover:border-gray-400 bg-gray-50"
+							disabled={isRunning.value}
+						/>
+					</div>
 				</div>
-				<div class="flex flex-col">
-					<label for="seconds" class="text-sm text-gray-600 mb-1">
-						Seconds
-					</label>
-					<input
-						type="number"
-						min="0"
-						max="59"
-						value={seconds.value}
-						onInput$={(e) => {
-							seconds.value = +(e.target as HTMLInputElement).value;
-						}}
-						id="seconds"
-						class="w-20 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-						disabled={isRunning.value}
-					/>
-				</div>
-			</div>
 
-			<div class={["text-center mb-8", { hidden: !isRunning.value }]}>
-				<div class="text-6xl font-bold">
-					{String(minutes.value).padStart(2, "0")}:
-					{String(seconds.value).padStart(2, "0")}
+				<div class={["text-center mb-10", { hidden: !isRunning.value }]}>
+					<div
+						class="text-7xl font-bold font-mono tracking-wider text-transparent
+					bg-clip-text bg-gradient-to-r from-primary-900 to-primary-300"
+					>
+						{String(minutes.value).padStart(2, "0")}:
+						{String(seconds.value).padStart(2, "0")}
+					</div>
 				</div>
 			</div>
 
@@ -117,7 +129,7 @@ export default component$(() => {
 					<button
 						onClick$={startTimer}
 						type="button"
-						class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-2 rounded-md transition-colors"
+						class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95"
 					>
 						Start
 					</button>
@@ -125,7 +137,7 @@ export default component$(() => {
 					<button
 						type="button"
 						onClick$={pauseTimer}
-						class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded-md transition-colors"
+						class="bg-gray-500 hover:bg-gray-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95"
 					>
 						Pause
 					</button>
@@ -133,7 +145,7 @@ export default component$(() => {
 				<button
 					type="button"
 					onClick$={resetTimer}
-					class="bg-secondary-900 hover:bg-secondary-950 text-white px-6 py-2 rounded-md transition-colors"
+					class="bg-secondary-900 hover:bg-secondary-950 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95"
 				>
 					Reset
 				</button>

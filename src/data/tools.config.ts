@@ -48,7 +48,7 @@ const playgroundItems: PlaygroundPageItem[] = [
 		path: "/playground/wake-lock",
 		icon: MatLockOutlined,
 		position: 2,
-		category: "API",
+		category: "Browser API",
 	},
 	{
 		title: "Screenshare with audio",
@@ -56,7 +56,7 @@ const playgroundItems: PlaygroundPageItem[] = [
 		path: "/playground/screenshare-with-audio",
 		icon: MatScreenshotOutlined,
 		position: 7,
-		category: "API",
+		category: "Browser API",
 	},
 	{
 		title: "Deepgram Real-time transcription for Video File",
@@ -78,7 +78,7 @@ const playgroundItems: PlaygroundPageItem[] = [
 		path: "/playground/window-management",
 		position: 3,
 		icon: MatWindowOutlined,
-		category: "API",
+		category: "Browser API",
 	},
 	{
 		title: "JSON to CSV Converter",

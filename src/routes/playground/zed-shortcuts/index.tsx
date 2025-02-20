@@ -2,11 +2,11 @@ import { component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 export const head: DocumentHead = {
-	title: "Zed Shortcuts Playground",
+	title: "Zed Shortcuts",
 	meta: [
 		{
 			name: "description",
-			content: "A page for searching and listing Zed shortcuts",
+			content: "Shortcuts for Zed editor that are useful for developers",
 		},
 	],
 };
@@ -24,15 +24,13 @@ const shortcuts: ShortcutIcon[] = [
 	},
 	{
 		key: "cmd r",
-		name: "Open right sidebar",
-		description:
-			"Open the right sidebar. I usually keep everything on the right",
+		name: "Toggle right sidebar",
+		description: "I usually keep everything on the right",
 	},
 	{
 		key: "cmd+shift+e",
 		name: "Open Project Explorer",
-		description:
-			"Open the project explorer to navigate files. You can navigate the project using vim keys(j, k, l, h)",
+		description: "You can navigate the project using vim keys(j, k, l, h)",
 	},
 	{
 		key: "cmd+shift+?",
@@ -42,16 +40,17 @@ const shortcuts: ShortcutIcon[] = [
 	{
 		key: ":line_number",
 		name: "Go to line number",
-		description:
-			"Go to the line number in the current file. Example: :10 will take you to line 10",
+		description: ":10 will take you to line 10",
 	},
 	{
 		key: "ctrl+d",
 		name: "Scroll down half page",
+		description: "Scrolls and moves the cursor",
 	},
 	{
 		key: "ctrl+u",
 		name: "Scroll up half page",
+		description: "Scrolls and moves the cursor",
 	},
 	{
 		key: "u",
@@ -66,8 +65,7 @@ const shortcuts: ShortcutIcon[] = [
 	{
 		key: "cmd+shift+o",
 		name: "Open outline",
-		description:
-			"Open the outline view to see the structure of the current file. Press escape to close the outline",
+		description: "View the structure of the current file",
 	},
 	{
 		key: "cmd+p",
@@ -77,8 +75,7 @@ const shortcuts: ShortcutIcon[] = [
 	{
 		key: "cmd+shift+r",
 		name: "Run a task",
-		description:
-			"Run a task from the task runner. You can define tasks in .zed/tasks.json",
+		description: "Define tasks in .zed/tasks.json",
 	},
 	{
 		key: "$",
@@ -88,6 +85,31 @@ const shortcuts: ShortcutIcon[] = [
 	{
 		key: "A",
 		name: "Move to end of line and enter edit mode",
+	},
+	{
+		key: "o",
+		name: "Add line below",
+		description: "Add a new line below the current line",
+	},
+	{
+		key: "O",
+		name: "Add line above",
+		description: "Add a new line above the current line",
+	},
+	{
+		key: "gg",
+		name: "Go to top of file",
+		description: "Move the cursor to the top of the file",
+	},
+	{
+		key: "G",
+		name: "Go to bottom of file",
+		description: "Move the cursor to the bottom of the file",
+	},
+	{
+		key: "x",
+		name: "Show file in finder",
+		description: "When focus is on the project, show the file in finder",
 	},
 ];
 
@@ -107,13 +129,24 @@ export default component$(() => {
 	const searchTerm = useSignal("");
 
 	return (
-		<div class="p-4">
-			<h1 class="text-xl font-bold">Zed Shortcuts</h1>
-			<p>
-				Use vim mode with Zed editor, it's super fast and efficient. Here are
-				some of the shortcuts that I use frequently.
-			</p>
-			<div class="mt-2">
+		<div class="lg:p-2">
+			<div class="flex gap-2 mb-4">
+				<div class="aspect-square w-12">
+					<img src="/icons/zed.png" width={48} height={48} alt="Zed Logo" />
+				</div>
+				<div>
+					<h1 class="text-xl font-bold">
+						<span>Zed Shortcuts</span>
+					</h1>
+					<p class="text-gray-600">
+						Zed is my favorite editor. I use vim mode with Zed editor, it's
+						super fast and efficient. Here are some of the shortcuts that I use
+						frequently.
+					</p>
+				</div>
+			</div>
+
+			<div class="mb-2">
 				<input
 					type="text"
 					placeholder="Search shortcuts..."
@@ -124,19 +157,20 @@ export default component$(() => {
 					class="w-full p-2 border rounded-md"
 				/>
 			</div>
-			<ul class="mt-4 space-y-2">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 				{shortcuts.map((shortcut) => (
-					<li
+					<div
 						class={[
-							"p-2 border-b",
+							"pr-2 py-3 border-b",
 							{
 								hidden: !doesMatch(searchTerm.value, shortcut),
 							},
+							"col-span-1 md:col-span-1 lg:col-span-1",
 						]}
 						key={shortcut.name}
 					>
 						<div class="flex gap-2 items-center">
-							<span class="text-sm text-gray-500 bg-gray-200 px-2 rounded-md">
+							<span class="text-lg text-black bg-secondary-600 px-2 rounded-md">
 								{shortcut.key}
 							</span>
 							<div class="text-lg text-gray-800 font-medium">
@@ -145,11 +179,13 @@ export default component$(() => {
 						</div>
 
 						{shortcut.description && (
-							<div class="text-sm text-gray-500">{shortcut.description}</div>
+							<div class="text-md text-gray-500 mt-2">
+								{shortcut.description}
+							</div>
 						)}
-					</li>
+					</div>
 				))}
-			</ul>
+			</div>
 		</div>
 	);
 });
