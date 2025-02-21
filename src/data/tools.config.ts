@@ -1,5 +1,6 @@
 import {
 	MatAnimationOutlined,
+	MatBubbleChartOutlined,
 	MatCalculateOutlined,
 	MatCategoryOutlined,
 	MatDataObjectOutlined,
@@ -31,6 +32,7 @@ export interface PlaygroundPageItem {
 	category?: string;
 	deprecated?: boolean;
 	tags?: string[];
+	isExternal?: boolean;
 }
 
 const playgroundItems: PlaygroundPageItem[] = [
@@ -41,6 +43,24 @@ const playgroundItems: PlaygroundPageItem[] = [
 		icon: MatTimerOutlined,
 		position: 1,
 		category: "Tools",
+	},
+	{
+		title: "Bit Bubble",
+		description: "A fun game with numbers",
+		path: "/bit-bubble",
+		icon: MatBubbleChartOutlined,
+		position: 0,
+		category: "Games",
+		isExternal: true,
+	},
+	{
+		title: "Quick Algebra",
+		description: "Practice algebra",
+		path: "https://www.jeeready.com?utm_source=saharan.me",
+		position: 1,
+		category: "Games",
+		isExternal: true,
+		icon: MatCalculateOutlined,
 	},
 	{
 		title: "Wake Lock API",
