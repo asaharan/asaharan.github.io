@@ -21,6 +21,7 @@ const links = [
 		text: "JEE Ready",
 		href: "https://jeeready.com",
 		isExternal: true,
+		isHidden: true,
 	},
 	{
 		text: "Blog",

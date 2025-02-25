@@ -90,62 +90,61 @@ export const aboutMeRaw: {
 			],
 			pictures: ["https://avatars.githubusercontent.com/u/11248242?v=4"],
 			avatar: "/images/amit-saharan-profile-picture.webp",
-			technologies: [
-				{
-					name: "Qwik",
-					icon: "https://cdn.svgporn.com/logos/qwik-icon.svg",
-					url: "https://qwik.builder.io",
-					reason: "Optimized for loading speed",
-				},
-				{
-					name: "Bun",
-					icon: "https://cdn.svgporn.com/logos/bun.svg",
-					url: "https://bun.sh",
-					reason: "Fast",
-				},
-				{
-					name: "ElysiaJS",
-					icon: "/icons/elysia.svg",
-					url: "https://elysiajs.com",
-					reason: "Fast and typesafe",
-				},
-				{
-					name: "Zed",
-					icon: "/icons/zed.png",
-					url: "https://zed.dev",
-					reason: "Out of the box vim support. Productivity++",
-				},
-				{
-					name: "TypeScript",
-					icon: "https://cdn.svgporn.com/logos/typescript-icon.svg",
-					url: "https://www.typescriptlang.org",
-					reason: "Seriously, why not?",
-				},
-				{
-					name: "MongoDB",
-					icon: "https://cdn.svgporn.com/logos/mongodb-icon.svg",
-					url: "https://www.mongodb.com",
-					reason: "Flexible(No migrations)",
-				},
-				{
-					name: "Svelte",
-					icon: "https://cdn.svgporn.com/logos/svelte-icon.svg",
-					url: "https://svelte.dev",
-					reason: "Easy to learn",
-				},
+			technologies: [{
+				name: "Zed",
+				icon: "/icons/zed.png",
+				url: "https://zed.dev",
+				reason: "Out of the box vim support. Productivity++",
+			},
+			{
+				name: "Qwik",
+				icon: "https://cdn.svgporn.com/logos/qwik-icon.svg",
+				url: "https://qwik.builder.io",
+				reason: "Optimized for loading speed",
+			},
+			{
+				name: "Bun",
+				icon: "https://cdn.svgporn.com/logos/bun.svg",
+				url: "https://bun.sh",
+				reason: "Fast",
+			},
+			{
+				name: "ElysiaJS",
+				icon: "/icons/elysia.svg",
+				url: "https://elysiajs.com",
+				reason: "Fast and typesafe",
+			},
+			{
+				name: "TypeScript",
+				icon: "https://cdn.svgporn.com/logos/typescript-icon.svg",
+				url: "https://www.typescriptlang.org",
+				reason: "Seriously, why not?",
+			},
+			{
+				name: "MongoDB",
+				icon: "https://cdn.svgporn.com/logos/mongodb-icon.svg",
+				url: "https://www.mongodb.com",
+				reason: "Flexible(No migrations)",
+			},
+			{
+				name: "Svelte",
+				icon: "https://cdn.svgporn.com/logos/svelte-icon.svg",
+				url: "https://svelte.dev",
+				reason: "Easy to learn",
+			},
 
-				{
-					name: "Node",
-					icon: "https://cdn.svgporn.com/logos/nodejs-icon.svg",
-					url: "https://nodejs.org",
-					reason: "Amazing ecosystem",
-				},
-				{
-					name: "React",
-					icon: "https://cdn.svgporn.com/logos/react.svg",
-					url: "https://reactjs.org",
-					reason: "Ecosystem",
-				},
+			{
+				name: "Node",
+				icon: "https://cdn.svgporn.com/logos/nodejs-icon.svg",
+				url: "https://nodejs.org",
+				reason: "Amazing ecosystem",
+			},
+			{
+				name: "React",
+				icon: "https://cdn.svgporn.com/logos/react.svg",
+				url: "https://reactjs.org",
+				reason: "Ecosystem",
+			},
 			],
 			workExperience: [
 				{
@@ -186,7 +185,7 @@ export const aboutMeRaw: {
 		lang: SupportedLanguages.hi,
 		detail: {
 			greeting: "नमस्ते।",
-			name: "अमित सहराण",
+			name: "अमित सहारण",
 			shortAbout:
 				"टेक्नोलॉजी के निदेशक [Masai School](https://masaischool.com), सह संस्थापक [Prepleaf](https://www.prepleaf.com)",
 			about: `मैं वर्तमान में [Masai School](https://masaischool.com) में टेक्नोलॉजी के निदेशक के रूप में काम कर रहा हूं। मैं [Prepleaf](https://www.prepleaf.com) का सह संस्थापक भी हूं। मैं 6 से अधिक साल से सॉफ्टवेयर उद्योग में काम कर रहा हूं। मुझे सुंदर और स्केलेबल उत्पाद बनाना पसंद है।`,

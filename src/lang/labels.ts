@@ -14,7 +14,7 @@ type LabelsByLanguage = {
 const labels: LabelsByLanguage = {
 	en: {
 		greeting: "Hello.",
-		technologyList: "My favorite tools and technologies",
+		technologyList: "Tech I use",
 		socialList: "Find me on",
 		workExperience: "Work Experience",
 	},

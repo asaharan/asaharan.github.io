@@ -1,13 +1,14 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { useLocation } from "@builder.io/qwik-city";
+import { PlaygroundItemGroups } from "~/components/ToolCard";
 import { WorkExperience } from "~/components/WorkExperience";
 import { getLabels } from "~/lang/labels";
 import { SupportedLanguages } from "~/lang/me";
 import allAboutMe from "~/lang/me";
 import { getMeta } from "~/lang/meta";
 
-const headingClass = "text-lg text-gray-600 mb-4 mt-6";
+const headingClass = "text-2xl font-medium text-gray-600 mb-4 mt-6";
 
 export default component$(() => {
 	const loc = useLocation();
@@ -17,19 +18,42 @@ export default component$(() => {
 	const aboutMe = allAboutMe[lang as SupportedLanguages];
 	return (
 		<>
-			<img
-				src={aboutMe.avatar}
-				width={"200"}
-				height={"200"}
-				class="rounded-3xl mb-4"
-				alt={aboutMe.name}
-				loading="eager"
-			/>
-			<p class="text-2xl mb-2">{aboutMe.name}</p>
-			<p
-				class="text-lg mb-4 text-gray-600"
-				dangerouslySetInnerHTML={aboutMe.shortAbout}
-			></p>
+			<div class="flex flex-col md:flex-row gap-4 md:items-center">
+				<img
+					src={aboutMe.avatar}
+					width={"128"}
+					height={"128"}
+					class="rounded-xl mb-4"
+					alt={aboutMe.name}
+					loading="eager"
+				/>
+				<div>
+					<p class="text-4xl font-bold mb-1">{aboutMe.name}</p>
+					<p
+						class="text-lg mb-4 text-gray-600"
+						dangerouslySetInnerHTML={aboutMe.shortAbout}
+					></p>
+					<div class="flex flex-wrap gap-4 mb-4">
+						{aboutMe.socialLinks.map((social) => (
+							<a
+								href={social.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								key={social.name}
+							>
+								<img
+									loading="lazy"
+									src={social.icon}
+									alt={social.name}
+									class="w-[24px] h-[24px]"
+									width={"24"}
+									height={"24"}
+								/>
+							</a>
+						))}
+					</div>
+				</div>
+			</div>
 			<h2 class={headingClass}>
 				<span>{labels.technologyList}</span>
 			</h2>
@@ -54,32 +78,14 @@ export default component$(() => {
 					</a>
 				))}
 			</div>
-			<h2 class={headingClass}>{labels.socialList}</h2>
-			<div class="flex flex-wrap gap-4 mb-4">
-				{aboutMe.socialLinks.map((social) => (
-					<a
-						href={social.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						key={social.name}
-					>
-						<img
-							loading="lazy"
-							src={social.icon}
-							alt={social.name}
-							class="w-[32px] h-[32px]"
-							width={"32"}
-							height={"32"}
-						/>
-					</a>
-				))}
-			</div>
 			<h2 class={headingClass}>{labels.workExperience}</h2>
-			<div class="flex flex-col gap-4">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 				{aboutMe.workExperience.map((work) => (
 					<WorkExperience {...work} key={work.company} />
 				))}
 			</div>
+			<br class="mb-4" />
+			<PlaygroundItemGroups lightHeading categories={['Tools', 'Guide']} />
 		</>
 	);
 });

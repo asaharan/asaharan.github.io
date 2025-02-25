@@ -12,6 +12,7 @@ interface TopbarLinkProps {
 	hoveredIndex: number;
 	lastHoveredIndex: number;
 	index: number;
+	isHidden?: boolean;
 }
 function getHoverState(hoveredIndex: number, index: number) {
 	const isHovered = hoveredIndex === index;
@@ -40,6 +41,7 @@ export const TopbarLink = component$<TopbarLinkProps>(
 		hoveredIndex,
 		lastHoveredIndex,
 		index,
+		isHidden,
 	}) => {
 		const isActive = useSignal(false);
 		const dir = useSignal("left");
@@ -70,7 +72,7 @@ export const TopbarLink = component$<TopbarLinkProps>(
 		return (
 			<Link
 				class={[
-					"text-gray-700 text-sm hover:text-blue-500 flex align-middle items-center px-4 h-12 relative",
+					"text-gray-700 text-sm hover:text-blue-500 align-middle items-center px-4 h-12 relative",
 					"after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full",
 					"after:bg-blue-500 after:transition-transform after:duration-300",
 					{
@@ -78,6 +80,8 @@ export const TopbarLink = component$<TopbarLinkProps>(
 						"after:scale-x-0": !isActive.value,
 						"after:origin-left": dir.value === "left",
 						"after:origin-right": dir.value === "right",
+						"hidden": isHidden,
+						"flex": !isHidden,
 					},
 				]}
 				href={href}

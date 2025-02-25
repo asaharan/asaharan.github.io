@@ -25,9 +25,9 @@ export interface PlaygroundPageItem {
 	description: string;
 	path: string;
 	icon?:
-		| ((props: SVGProps<SVGSVGElement>) => JSXNode)
-		| typeof LowercaseSvg
-		| typeof Uppercase;
+	| ((props: SVGProps<SVGSVGElement>) => JSXNode)
+	| typeof LowercaseSvg
+	| typeof Uppercase;
 	position?: number;
 	category?: string;
 	deprecated?: boolean;
@@ -49,7 +49,7 @@ const playgroundItems: PlaygroundPageItem[] = [
 		description: "A fun game with numbers",
 		path: "/bit-bubble",
 		icon: MatBubbleChartOutlined,
-		position: 0,
+		position: 1,
 		category: "Games",
 		isExternal: true,
 	},
@@ -224,7 +224,7 @@ const playgroundItems: PlaygroundPageItem[] = [
 		title: "Zed Shortcuts",
 		description: "Shortcuts that I use in Zed",
 		path: "/playground/zed-shortcuts",
-		position: 0,
+		position: -1,
 		icon: MatShortcutOutlined,
 		category: "Guide",
 	},
