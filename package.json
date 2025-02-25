@@ -52,6 +52,7 @@
 		"gpt-tokenizer": "^2.1.2",
 		"openai": "^4.47.1",
 		"papaparse": "^5.4.1",
+		"posthog-js": "^1.223.4",
 		"tldts": "^6.1.20",
 		"tweetnacl": "^1.0.3"
 	},

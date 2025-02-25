@@ -23,7 +23,7 @@ export default component$(() => {
 					src={aboutMe.avatar}
 					width={"128"}
 					height={"128"}
-					class="rounded-xl mb-4"
+					class="rounded-xl"
 					alt={aboutMe.name}
 					loading="eager"
 				/>
