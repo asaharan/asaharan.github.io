@@ -63,13 +63,13 @@ const shortcuts: ShortcutIcon[] = [
 		description: "Redo the last undone change. Opposite of undo.",
 	},
 	{
-		key: "cmd+shift+o",
+		key: ["cmd+shift+o", "g s"],
 		name: "Open outline",
 		description: "View the structure of the current file",
 	},
 	{
 		key: "cmd+p",
-		name: "Search file",
+		name: "Search file by name",
 		description: "Search for a file in the project",
 	},
 	{
@@ -84,7 +84,18 @@ const shortcuts: ShortcutIcon[] = [
 	},
 	{
 		key: "A",
-		name: "Move to end of line and enter edit mode",
+		name: "Insert at end of line",
+		description: "Move to end of line and enter edit mode",
+	},
+	{
+		key: "I",
+		name: "Insert at start of line",
+		description: "Move to start of line and enter edit mode",
+	},
+	{
+		key: "i",
+		name: "Insert at cursor",
+		description: "Enter edit mode at the current cursor position",
 	},
 	{
 		key: "o",
@@ -111,11 +122,28 @@ const shortcuts: ShortcutIcon[] = [
 		name: "Show file in finder",
 		description: "When focus is on the project, show the file in finder",
 	},
+	{
+		key: "gh",
+		name: "Hover",
+		description: "Hover over a word to see its definition",
+	},
+	{
+		key: "g]",
+		name: "Jump to next diagnostic",
+		description: "Quicky loop through errors",
+	},
+	{
+		key: "g[",
+		name: "Jump to previous diagnostic",
+		description: "Quicky loop through errors",
+	},
 ];
 
 function doesMatch(search: string, shortcut: ShortcutIcon) {
 	const searchTerm = search.toLowerCase();
-	const key = shortcut.key.toLowerCase();
+	const key = Array.isArray(shortcut.key)
+		? shortcut.key.join(" or ")
+		: shortcut.key;
 	const name = shortcut.name.toLowerCase();
 	const description = shortcut.description?.toLowerCase();
 	return (
@@ -170,9 +198,20 @@ export default component$(() => {
 						key={shortcut.name}
 					>
 						<div class="flex gap-2 items-center">
-							<span class="text-lg text-black bg-secondary-600 px-2 rounded-md">
-								{shortcut.key}
-							</span>
+							{Array.isArray(shortcut.key) ? (
+								shortcut.key.map((key) => (
+									<span
+										key={key}
+										class="text-lg text-black bg-secondary-600 px-2 rounded-md"
+									>
+										{key}
+									</span>
+								))
+							) : (
+								<span class="text-lg text-black bg-secondary-600 px-2 rounded-md">
+									{shortcut.key}
+								</span>
+							)}
 							<div class="text-lg text-gray-800 font-medium">
 								{shortcut.name}
 							</div>
