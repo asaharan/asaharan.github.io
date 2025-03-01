@@ -12,7 +12,7 @@ export const head: DocumentHead = {
 };
 
 interface ShortcutIcon {
-	key: string;
+	key: string | string[];
 	name: string;
 	description?: string;
 }
