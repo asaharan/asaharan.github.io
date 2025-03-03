@@ -6,8 +6,12 @@ export const head: DocumentHead = {
 	meta: [
 		{
 			name: "description",
-			content: "Shortcuts for Zed editor that are useful for developers",
+			content: "Shortcuts and hotkeys for Zed editor that are useful for developers",
 		},
+		{
+			name:"last-updated",
+			content:"2025-03-03"
+		}
 	],
 };
 
@@ -18,14 +22,29 @@ interface ShortcutIcon {
 }
 const shortcuts: ShortcutIcon[] = [
 	{
-		key: "c d",
+		key: "cd",
 		name: "Rename variable/function",
 		description: "Rename the variable or function under the cursor",
 	},
 	{
-		key: "cmd r",
+		key: "cmd+r",
 		name: "Toggle right sidebar",
 		description: "I usually keep everything on the right",
+	},
+	{
+		key:"shift+esc",
+		name:"Enter zen mode",
+		description:"Enter fullscreen mode, this works for files, terminal and AI assistant"
+	},
+	{
+		key:"ctrl+shift+~",
+		name:"Add a new terminal",
+		description:"Add a new terminal to the terminal panel"
+	},
+	{
+			key: "cmd+j",
+			name: "Toggle terminal panel",
+			description: "To toggle the terminal panel",
 	},
 	{
 		key: "cmd+shift+e",
@@ -38,7 +57,7 @@ const shortcuts: ShortcutIcon[] = [
 		description: "Open the assistant panel to chat with the assistant",
 	},
 	{
-		key: ":line_number",
+		key: ":[line_number]",
 		name: "Go to line number",
 		description: ":10 will take you to line 10",
 	},
@@ -128,6 +147,11 @@ const shortcuts: ShortcutIcon[] = [
 		description: "Hover over a word to see its definition",
 	},
 	{
+		key:"gd",
+		name:"Go to definition",
+		description:"Jump to the definition of the word under the cursor"
+	},
+	{
 		key: "g]",
 		name: "Jump to next diagnostic",
 		description: "Quicky loop through errors",
@@ -160,7 +184,9 @@ export default component$(() => {
 		<div class="lg:p-2">
 			<div class="flex gap-4 mb-4">
 				<div class="aspect-square w-12">
-					<img src="/icons/zed.png" width={48} height={48} alt="Zed Logo" />
+					<a href="https://zed.dev" target="_blank">
+						<img src="/icons/zed.png" width={48} height={48} alt="Zed Logo" />
+					</a>
 				</div>
 				<div>
 					<h1 class="text-xl font-bold">
@@ -171,6 +197,9 @@ export default component$(() => {
 						super fast and efficient. Here are some of the shortcuts that I use
 						frequently.
 					</p>
+					<div class='text-gray-400 text-sm'>
+						<p>Last updated: 3rd March 2025</p>
+					</div>
 				</div>
 			</div>
 
