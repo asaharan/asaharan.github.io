@@ -1,5 +1,6 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import ImgZed from '~/media/zed.png?w=64&h=64&jsx';
 
 export const head: DocumentHead = {
 	title: "Zed Shortcuts",
@@ -185,7 +186,7 @@ export default component$(() => {
 			<div class="flex gap-4 mb-4">
 				<div class="aspect-square w-12">
 					<a href="https://zed.dev" target="_blank">
-						<img src="/icons/zed.png" width={48} height={48} alt="Zed Logo" />
+						<ImgZed alt="Zed Logo" />
 					</a>
 				</div>
 				<div>

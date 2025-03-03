@@ -1,4 +1,4 @@
-import { component$, isBrowser, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, isBrowser, useVisibleTask$, isDev } from "@builder.io/qwik";
 import posthog from 'posthog-js';
 import { useDocumentHead, useLocation } from "@builder.io/qwik-city";
 
@@ -10,8 +10,7 @@ export const RouterHead = component$(() => {
 	const loc = useLocation();
 	// eslint-disable-next-line qwik/no-use-visible-task
 	useVisibleTask$(() => {
-		if (isBrowser) {
-			console.log('it is a browser')
+		if (isBrowser && !isDev) {
 			posthog.init('phc_I0Y7H2N3NwbAd2PKsAeMr5iNVf9epoTAk1pqKGI4JMA', {
 				api_host: 'https://us.posthog.com',
 				person_profiles: 'always',
