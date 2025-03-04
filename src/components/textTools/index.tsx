@@ -1,4 +1,11 @@
-import { type Signal, component$, useStore, useTask$ } from "@builder.io/qwik";
+import {
+	type Signal,
+	component$,
+	useStore,
+	useTask$,
+	QwikChangeEvent,
+	useSignal,
+} from "@builder.io/qwik";
 import {
 	countNumberOfCharacters,
 	countNumberOfWords,
@@ -9,6 +16,19 @@ import {
 } from "~/utils/string";
 import { CopyButton } from "../Copy";
 import GPTTokenVisualizer from "./GPTTokenVisualizer";
+import { toolDescriptionByTool } from "~/data/stringTools";
+
+function getPlaceholderText(tool: string) {
+	if (tool === "convert-text-to-uppercase") {
+		return "UPPERCASE text will be shown here";
+	}
+	if (tool === "convert-text-to-lowercase") {
+		return "lowercase text will be shown here";
+	}
+	if (tool === "count-unique-words-in-text") {
+		return "All the unique words in the text will be shown here";
+	}
+}
 
 export default component$(
 	({
@@ -36,13 +56,16 @@ export default component$(
 			counts: [],
 			copyableText: "",
 		});
+		const caseSensitive = useSignal(false);
+		const description = toolDescriptionByTool[_selectedTool] || "";
 		useTask$(({ track }) => {
 			const text = track(() => textProp.value);
+			const caseInsensitive = track(() => !caseSensitive.value);
 			const selectedTool = track(() => _selectedTool);
 			const lowercaseText = textToLowerCase(text);
 			const uppercaseText = textToUpperCase(text);
 			const characterCount = countNumberOfCharacters(text);
-			const uniqueItems = countUniqueWords(text);
+			const uniqueItems = countUniqueWords(text, caseInsensitive);
 			const totalWords = countNumberOfWords(text);
 			const tokens = gptTokens(text);
 			let copyableText = "";
@@ -50,6 +73,8 @@ export default component$(
 				copyableText = lowercaseText;
 			} else if (selectedTool === "convert-text-to-uppercase") {
 				copyableText = uppercaseText;
+			} else if (selectedTool === "count-unique-words-in-text") {
+				copyableText = uniqueItems.join(", ");
 			}
 			store.lowercaseText = lowercaseText;
 			store.uppercaseText = uppercaseText;
@@ -72,7 +97,7 @@ export default component$(
 				{
 					label: "Unique Words",
 					value: uniqueItems.length,
-					isActive: selectedTool === "count-unique-items",
+					isActive: selectedTool === "count-unique-words-in-text",
 				},
 				{
 					label: "GPT Tokens",
@@ -86,11 +111,26 @@ export default component$(
 		});
 		return (
 			<>
-				{["convert-text-to-lowercase", "convert-text-to-uppercase"].includes(
-					_selectedTool,
-				) && (
+				{["count-unique-words-in-text"].includes(_selectedTool) ? (
+					<div class="flex flex-row justify-start items-center my-2">
+						<input
+							id="caseSensitiveCheckbox"
+							type="checkbox"
+							bind:checked={caseSensitive}
+						/>
+						<label for="caseSensitiveCheckbox" class="ml-2">
+							Case Sensitive
+						</label>
+					</div>
+				) : null}
+				{[
+					"convert-text-to-lowercase",
+					"convert-text-to-uppercase",
+					"count-unique-words-in-text",
+				].includes(_selectedTool) && (
 					<div class="relative">
 						<textarea
+							placeholder={getPlaceholderText(_selectedTool)}
 							class="border-2 border-gray-300 rounded-lg p-3 w-full min-h-[200px] bg-gray-50 font-mono"
 							value={store.copyableText}
 						/>
@@ -143,6 +183,12 @@ export default component$(
 						);
 					})}
 				</div>
+				{description ? (
+					<div class="my-2 bg-gray-100 p-2 rounded-lg">
+						<h3 class="text-xl font-bold">What is it?</h3>
+						<div class="whitespace-pre-line text-gray-800">{description}</div>
+					</div>
+				) : null}
 			</>
 		);
 	},

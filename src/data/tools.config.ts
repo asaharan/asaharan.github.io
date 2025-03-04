@@ -157,10 +157,10 @@ const playgroundItems: PlaygroundPageItem[] = [
 		tags: ["string-tool"],
 	},
 	{
-		title: "Count unique items",
-		shortTitle: "Count Unique",
+		title: "Count unique words",
+		shortTitle: "Unique Words",
 		description: "Count unique items",
-		path: "/playground/string-tools/count-unique-items",
+		path: "/playground/string-tools/count-unique-words-in-text",
 		position: 4,
 		icon: MatCategoryOutlined,
 		category: "Tools",

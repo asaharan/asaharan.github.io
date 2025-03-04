@@ -21,8 +21,9 @@ export const countNumberOfCharacters = (text: string) => text.length;
 export const countNumberOfWords = (text: string) =>
 	text.split(/\s+/).filter((i) => i).length;
 export const countNumberOfLines = (text: string) => text.split(/\n/).length;
-export const countUniqueWords = (text: string) => {
-	const words = text.split(/[\s,;]+/);
+export const countUniqueWords = (text: string, caseInsensitive: boolean) => {
+	const t = caseInsensitive ? text.toLowerCase() : text;
+	const words = t.split(/[\s,.;:?]+/);
 	const unique = new Set(words);
 	return Array.from(unique).filter((i) => i);
 };
