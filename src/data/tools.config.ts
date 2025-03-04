@@ -25,9 +25,9 @@ export interface PlaygroundPageItem {
 	description: string;
 	path: string;
 	icon?:
-	| ((props: SVGProps<SVGSVGElement>) => JSXNode)
-	| typeof LowercaseSvg
-	| typeof Uppercase;
+		| ((props: SVGProps<SVGSVGElement>) => JSXNode)
+		| typeof LowercaseSvg
+		| typeof Uppercase;
 	position?: number;
 	category?: string;
 	deprecated?: boolean;
@@ -223,7 +223,7 @@ const playgroundItems: PlaygroundPageItem[] = [
 	{
 		title: "Zed Shortcuts",
 		description: "Shortcuts that I use in Zed",
-		path: "/playground/zed-shortcuts",
+		path: "/zed-shortcuts",
 		position: -1,
 		icon: MatShortcutOutlined,
 		category: "Guide",
