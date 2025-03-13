@@ -98,6 +98,7 @@ export default component$(() => {
 							placeholder="Enter your password"
 						/>
 						<button
+							type="button"
 							onClick$={generatePassword}
 							title="Generate Strong Password"
 							class="px-3 py-2 bg-primary-500 text-white rounded-md hover:bg-primary-600 transition-colors flex items-center gap-2"
@@ -109,7 +110,10 @@ export default component$(() => {
 				</div>
 
 				<div class="space-y-2">
-					<label class="block text-sm font-medium text-gray-700">
+					<label
+						class="block text-sm font-medium text-gray-700"
+						for="hash-output"
+					>
 						Generated Hash{" "}
 						{isProcessing.value && (
 							<span class="text-primary-500">(processing...)</span>
@@ -117,6 +121,7 @@ export default component$(() => {
 					</label>
 					<div class="flex gap-2">
 						<input
+							id="hash-output"
 							class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md font-mono text-sm"
 							bind:value={hash}
 							type="text"
@@ -128,9 +133,9 @@ export default component$(() => {
 				</div>
 
 				<div class="pt-2">
-					<label class="block text-sm font-medium text-gray-700">
+					<legend class="block text-sm font-medium text-gray-700">
 						Processing Time
-					</label>
+					</legend>
 					<div class="text-gray-600">
 						{seconds ? `${seconds} seconds ` : ""}
 						{milliseconds} milliseconds
