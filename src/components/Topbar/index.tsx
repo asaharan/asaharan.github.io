@@ -1,8 +1,9 @@
 import { component$, useStore } from "@builder.io/qwik";
-import { LanguageSelector } from "../LanguageSelector";
 import { TopbarLink } from "./TopbarLink";
 import clsx from "clsx";
 import MenuIcon from "./menu.svg";
+import allAboutMe from "~/lang/me";
+import { SupportedLanguages } from "~/lang/me";
 
 const links = [
 	{
@@ -128,8 +129,32 @@ export const Topbar = component$(() => {
 						/>
 					))}
 				</div>
-				<div class="flex">
-					<LanguageSelector />
+				<div class="flex items-center">
+					{allAboutMe[SupportedLanguages.en].socialLinks.map((social) => {
+						let iconSrc = social.icon;
+
+						// Use local SVG files for specific social platforms
+						if (social.name === "Twitter") {
+							iconSrc = "/src/media/x.svg";
+						} else if (social.name === "GitHub") {
+							iconSrc = "/src/media/github.svg";
+						} else if (social.name === "Facebook") {
+							iconSrc = "/src/media/facebook.svg";
+						}
+
+						return (
+							<a
+								key={social.name}
+								href={social.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="flex items-center mx-2 h-12"
+								aria-label={social.name}
+							>
+								<img src={iconSrc} alt={social.name} width={22} height={22} />
+							</a>
+						);
+					})}
 				</div>
 			</div>
 		</div>

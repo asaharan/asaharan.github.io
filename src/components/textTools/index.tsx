@@ -3,7 +3,6 @@ import {
 	component$,
 	useStore,
 	useTask$,
-	QwikChangeEvent,
 	useSignal,
 } from "@builder.io/qwik";
 import {

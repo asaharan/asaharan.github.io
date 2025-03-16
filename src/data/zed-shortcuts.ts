@@ -18,7 +18,7 @@ export const shortcuts: ShortcutIcon[] = [
 		key: "shift+esc",
 		name: "Enter zen mode",
 		description:
-			"Enter fullscreen mode, this works for files, terminal and AI assistant",
+			"Enter fullscreen mode, this works for files, terminal, AI assistant and Git text input",
 	},
 	{
 		key: "ctrl+shift+~",
@@ -150,5 +150,41 @@ export const shortcuts: ShortcutIcon[] = [
 		name: "toggle git panel",
 		description:
 			"You can use vim navigation keys to navigate through the git panel",
+	},
+	{
+		key: "option+tab",
+		name: "Generate commit message",
+		description:
+			"When focused on commit message in Git Panel, let AI generate a commit message",
+	},
+	{
+		key: "ctrl+g ctrl+g",
+		name: "git fetch",
+		description: "fetch changes from remote",
+	},
+	{
+		key: "ctrl+g down",
+		name: "git pull",
+		description: "pull changes from remote",
+	},
+	{
+		key: "ctrl+g up",
+		name: "git push",
+		description: "push changes to remote",
+	},
+	{
+		key: "ctrl+g shift+up",
+		name: "git push --force",
+		description: "forcepush changes to remote",
+	},
+	{
+		key: "ctrl+g d",
+		name: "git diff",
+		description: "show all changes",
+	},
+	{
+		key: "ctrl+cmd+y",
+		name: "git add --all",
+		description: "stage all changes",
 	},
 ];

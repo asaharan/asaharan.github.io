@@ -12,7 +12,7 @@ export const head = {
 		},
 		{
 			name: "last-updated",
-			content: "2025-03-03",
+			content: "2025-03-16",
 		},
 	],
 };
