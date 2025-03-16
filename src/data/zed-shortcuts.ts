@@ -187,4 +187,14 @@ export const shortcuts: ShortcutIcon[] = [
 		name: "git add --all",
 		description: "stage all changes",
 	},
+	{
+		key: "shift+x",
+		name: "git add --all",
+		description: "stage all changes",
+	},
+	{
+		key: "shift+u",
+		name: "unstage all changes",
+		description: "unstage all changes",
+	},
 ];
