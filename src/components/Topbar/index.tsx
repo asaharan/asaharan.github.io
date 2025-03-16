@@ -131,17 +131,9 @@ export const Topbar = component$(() => {
 				</div>
 				<div class="flex items-center">
 					{allAboutMe[SupportedLanguages.en].socialLinks.map((social) => {
-						let iconSrc = social.icon;
+						const iconSrc = social.icon;
 
 						// Use local SVG files for specific social platforms
-						if (social.name === "Twitter") {
-							iconSrc = "/src/media/x.svg";
-						} else if (social.name === "GitHub") {
-							iconSrc = "/src/media/github.svg";
-						} else if (social.name === "Facebook") {
-							iconSrc = "/src/media/facebook.svg";
-						}
-
 						return (
 							<a
 								key={social.name}

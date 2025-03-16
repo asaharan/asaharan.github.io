@@ -1,4 +1,7 @@
 import { customMarkdownToHTML, customMarkdownToText } from "~/utils/string";
+import FacebookIcon from "../media/facebook.svg";
+import GitHubIcon from "../media/github.svg";
+import TwitterIcon from "../media/x.svg";
 
 interface Technology {
 	name: string;
@@ -66,20 +69,20 @@ export const aboutMeRaw: {
 				{
 					name: "Twitter",
 					url: "https://twitter.com/asaharan812",
-					icon: "https://cdn.svgporn.com/logos/twitter.svg",
+					icon: TwitterIcon,
 					username: "asaharan812",
 				},
 
 				{
 					name: "GitHub",
 					url: "https://github.com/asaharan",
-					icon: "https://cdn.svgporn.com/logos/github-icon.svg",
+					icon: GitHubIcon,
 					username: "asaharan",
 				},
 				{
 					name: "Facebook",
 					url: "https://www.facebook.com/asaharan812",
-					icon: "https://cdn.svgporn.com/logos/facebook.svg",
+					icon: FacebookIcon,
 					username: "asaharan812",
 				},
 				{
