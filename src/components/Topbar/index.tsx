@@ -1,22 +1,49 @@
-import { component$, useStore } from "@builder.io/qwik";
+import {
+	type JSXNode,
+	type SVGProps,
+	component$,
+	useStore,
+	JSXOutput,
+} from "@builder.io/qwik";
 import { TopbarLink } from "./TopbarLink";
 import clsx from "clsx";
 import MenuIcon from "./menu.svg";
 import allAboutMe from "~/lang/me";
 import { SupportedLanguages } from "~/lang/me";
 
-const links = [
+export interface ITopbarLink {
+	text: string;
+	href: string;
+	isExternal?: boolean;
+	isHidden?: boolean;
+	icon?: "Home" | "Playground" | "Game" | "Tax" | "Text" | "Blog" | "Prepleaf";
+}
+
+const links: ITopbarLink[] = [
 	{
 		text: "Home",
 		href: "/",
+		icon: "Home",
 	},
 	{
 		text: "Playground",
 		href: "/playground",
+		icon: "Playground",
 	},
 	{
-		text: "String tools",
+		text: "Bit Bubble",
+		href: "https://bit-bubble.saharan.me?utm_source=home-nav",
+		icon: "Game",
+	},
+	{
+		text: "Tax Calculator",
+		href: "https://tax.saharan.me?utm_source=home-nav",
+		icon: "Tax",
+	},
+	{
+		text: "Text tools",
 		href: "/playground/string-tools",
+		icon: "Text",
 	},
 	{
 		text: "JEE Ready",
@@ -27,22 +54,25 @@ const links = [
 	{
 		text: "Blog",
 		href: "/blogs",
+		icon: "Blog",
 	},
 	{
 		text: "Prepleaf",
 		href: "https://prepleaf.com",
 		isExternal: true,
+		isHidden: true,
 	},
 	{
 		text: "Masai School",
 		href: "https://www.masaischool.com",
 		isExternal: true,
+		isHidden: true,
 	},
-
 	{
 		text: "College Profile",
 		href: "https://home.iitk.ac.in/~amitkum",
 		isExternal: true,
+		isHidden: true,
 	},
 ];
 
@@ -83,51 +113,55 @@ export const Topbar = component$(() => {
 						)}
 					>
 						<div class="container mx-auto">
-							{links.map((link, index) => (
-								<TopbarLink
-									onClick$={() => {
-										store.open = false;
-									}}
-									key={link.href}
-									{...link}
-									index={index}
-									hoveredIndex={store.hoveredIndex}
-									lastHoveredIndex={store.lastHoveredIndex}
-									onMouseEnter$={() => {
-										// store.lastHoveredIndex = store.hoveredIndex;
-										// store.hoveredIndex = index;
-									}}
-									onMouseLeave$={() => {
-										// store.lastHoveredIndex = store.hoveredIndex;
-										// store.hoveredIndex = -1;
-									}}
-								/>
-							))}
+							{links.map((link, index) => {
+								return (
+									<TopbarLink
+										onClick$={() => {
+											store.open = false;
+										}}
+										key={link.href}
+										{...link}
+										index={index}
+										hoveredIndex={store.hoveredIndex}
+										lastHoveredIndex={store.lastHoveredIndex}
+										onMouseEnter$={() => {
+											// store.lastHoveredIndex = store.hoveredIndex;
+											// store.hoveredIndex = index;
+										}}
+										onMouseLeave$={() => {
+											// store.lastHoveredIndex = store.hoveredIndex;
+											// store.hoveredIndex = -1;
+										}}
+									/>
+								);
+							})}
 						</div>
 					</div>
 				</div>
 
 				<div class="md:flex hidden group/nav">
-					{links.map((link, index) => (
-						<TopbarLink
-							onClick$={() => {
-								store.open = false;
-							}}
-							key={link.href}
-							onMouseEnter$={() => {
-								store.lastHoveredIndex = store.hoveredIndex;
-								store.hoveredIndex = index;
-							}}
-							onMouseLeave$={() => {
-								store.lastHoveredIndex = store.hoveredIndex;
-								store.hoveredIndex = -1;
-							}}
-							hoveredIndex={store.hoveredIndex}
-							lastHoveredIndex={store.lastHoveredIndex}
-							index={index}
-							{...link}
-						/>
-					))}
+					{links.map((link, index) => {
+						return (
+							<TopbarLink
+								onClick$={() => {
+									store.open = false;
+								}}
+								key={link.href}
+								onMouseEnter$={() => {
+									store.lastHoveredIndex = store.hoveredIndex;
+									store.hoveredIndex = index;
+								}}
+								onMouseLeave$={() => {
+									store.lastHoveredIndex = store.hoveredIndex;
+									store.hoveredIndex = -1;
+								}}
+								hoveredIndex={store.hoveredIndex}
+								lastHoveredIndex={store.lastHoveredIndex}
+								index={index}
+								{...link}
+							/>
+						);
+					})}
 				</div>
 				<div class="flex items-center">
 					{allAboutMe[SupportedLanguages.en].socialLinks.map((social) => {
