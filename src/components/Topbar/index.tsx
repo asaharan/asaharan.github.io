@@ -1,10 +1,4 @@
-import {
-	type JSXNode,
-	type SVGProps,
-	component$,
-	useStore,
-	JSXOutput,
-} from "@builder.io/qwik";
+import { component$, useStore } from "@builder.io/qwik";
 import { TopbarLink } from "./TopbarLink";
 import clsx from "clsx";
 import MenuIcon from "./menu.svg";
