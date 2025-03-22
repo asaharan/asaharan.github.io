@@ -28,7 +28,7 @@ function RenderIcon({ name }: { name: ITopbarLink["icon"] }) {
 	return icon;
 }
 
-interface TopbarLinkProps {
+interface TopbarLinkProps extends ITopbarLink {
 	onClick$: PropFunction<() => void>;
 	onMouseEnter$: PropFunction<() => void>;
 	onMouseLeave$: PropFunction<() => void>;
