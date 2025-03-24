@@ -37,6 +37,15 @@ export interface PlaygroundPageItem {
 
 const playgroundItems: PlaygroundPageItem[] = [
 	{
+		title: "JSON Diff Checker",
+		description:
+			"Identify differences between actual and target JSON structures",
+		path: "/playground/json-diff",
+		icon: MatDataObjectOutlined,
+		position: 0,
+		category: "Tools",
+	},
+	{
 		title: "Timer",
 		description: "Start, pause, and reset a timer",
 		path: "/playground/timer",

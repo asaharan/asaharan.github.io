@@ -19,11 +19,13 @@
 		"lint": "eslint \"src/**/*.ts*\"",
 		"preview": "qwik build preview && vite preview --open",
 		"start": "vite --open --mode ssr",
-		"qwik": "qwik"
+		"qwik": "qwik",
+		"test": "jest"
 	},
 	"devDependencies": {
 		"@builder.io/qwik": "^1.12.0",
 		"@builder.io/qwik-city": "^1.12.0",
+		"@jest/globals": "^29.7.0",
 		"@qwikest/icons": "^0.0.13",
 		"@types/bcryptjs": "^2.4.6",
 		"@types/d3": "^7.4.3",
@@ -39,6 +41,7 @@
 		"prettier": "3.3.3",
 		"prettier-plugin-tailwindcss": "^0.5.4",
 		"tailwindcss": "^3.4.6",
+		"ts-jest": "^29.3.0",
 		"typescript": "5.4.5",
 		"undici": "*",
 		"vite": "5.3.5",
