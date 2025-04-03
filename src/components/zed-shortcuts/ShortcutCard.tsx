@@ -1,8 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import type { ShortcutItem } from "~/data/zed-shortcuts";
 import WorksIn from "./WorksIn";
-
-
+import ShortcutKey from "./ShortcutKey";
 
 export default component$(({ shortcut, hidden }: { shortcut: ShortcutItem, hidden?: boolean }) => {
 	return (
@@ -20,20 +19,9 @@ export default component$(({ shortcut, hidden }: { shortcut: ShortcutItem, hidde
 				<div class="card-title">
 					{shortcut.name}
 				</div>
-				<p class="flex gap-2">
-					{Array.isArray(shortcut.key) ? (
-						shortcut.key.map((key, index) => (
-							<>
-								{index > 0 && <span class="text-gray-500">or</span>}
-								<kbd key={key} class="kbd">{key}</kbd>
-							</>
-						))
-					) : (
-						<kbd class="kbd">
-							{shortcut.key}
-						</kbd>
-					)}
-				</p>
+				<div class="flex flex-col gap-1">
+					<ShortcutKey shortcuts={shortcut.key} />
+				</div>
 				{shortcut.description && (
 					<p class="">
 						{shortcut.description}

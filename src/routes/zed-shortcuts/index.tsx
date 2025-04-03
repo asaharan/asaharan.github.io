@@ -7,10 +7,13 @@ import {
 import ShortcutCard from "~/components/zed-shortcuts/ShortcutCard";
 import { filterShortcuts } from "~/utils/shortcut";
 import { LuSearch } from "@qwikest/icons/lucide";
+import dayjs from "dayjs";
 
+const lastUpdated = "2025-04-04";
+const lastUpdatedHumanReadable = dayjs(lastUpdated).format("MMMM D, YYYY");
 
 export const head = {
-	title: "Zed Shortcuts",
+	title: "Essential Zed Shortcuts for Faster Coding",
 	meta: [
 		{
 			name: "description",
@@ -19,7 +22,7 @@ export const head = {
 		},
 		{
 			name: "last-updated",
-			content: "2025-04-03",
+			content: lastUpdated,
 		},
 	],
 };
@@ -44,8 +47,7 @@ export default component$(() => {
 					</h1>
 					<p class="text-gray-600">
 						Zed is my favorite editor. I use vim mode with Zed editor, it's
-						super fast and efficient. Here are some of the shortcuts that I use
-						frequently.
+						super fast and efficient. Here are some of the Zed Commands and Zed Shortcuts that I use frequently to enhance my productivity.
 					</p>
 					<p>
 						You can read{" "}
@@ -55,7 +57,7 @@ export default component$(() => {
 						if you want to know why Zed is my primary editor.
 					</p>
 					<div class="text-gray-400 text-sm">
-						<p>Last updated: 3rd March 2025</p>
+						<p>Last updated on {lastUpdatedHumanReadable}</p>
 					</div>
 				</div>
 			</div>

@@ -15,9 +15,10 @@ export default component$(({ worksIn }: { worksIn: ShortcutItem['worksIn'] }) =>
 	if (!worksIn) { return null; }
 	return (
 		<div class="flex gap-2 flex-wrap">
-			<span class="inline-flex">Works in:</span>
 			{worksIn?.map((panel) => (
-				<span class="badge badge-ghost" key={panel}>{panelIcons[panel]}{panel}</span>
+				<div class="inline tooltip" data-tip={"Works in " + panel} key={panel}>
+					<span class="badge badge-ghost" >{panelIcons[panel]}{panel}</span>
+				</div>
 			))}
 		</div>
 	);

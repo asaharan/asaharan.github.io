@@ -20,14 +20,12 @@ export function filterShortcuts(
 	}
 
 	const searchTerm = search.toLowerCase();
-	const key = Array.isArray(shortcut.key)
-		? shortcut.key.join(" or ").toLowerCase()
-		: shortcut.key.toLowerCase();
+	const keys = shortcut.key.map(key => key.join(" or ").toLowerCase())
 	const name = shortcut.name.toLowerCase();
 	const description = shortcut.description?.toLowerCase();
 
 	return (
-		key.includes(searchTerm) ||
+		keys.some(key => key.includes(searchTerm)) ||
 		name.includes(searchTerm) ||
 		description?.includes(searchTerm)
 	);

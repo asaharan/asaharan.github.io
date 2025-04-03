@@ -23,6 +23,9 @@ importers:
       d3:
         specifier: ^7.9.0
         version: 7.9.0
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       gpt-tokenizer:
         specifier: ^2.1.2
         version: 2.8.1
