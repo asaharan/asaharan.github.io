@@ -2,9 +2,20 @@
  * Tailwind CSS imports
  * View the full documentation at https://tailwindcss.com
  */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @tailwind base; */
+/* @tailwind components; */
+/* @tailwind utilities; */
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui" {
+	themes: light --default, light --prefersdark;
+	root: ":root";
+	/* include: ; */
+	/* exclude: ; */
+	logs: true;
+}
+
 
 /**
  * WHAT IS THIS FILE?
@@ -37,6 +48,7 @@ body {
 	padding: 0;
 	line-height: inherit;
 }
+
 .link {
 	@apply text-blue-800 underline hover:bg-blue-800 hover:text-white py-1;
 }
@@ -45,10 +57,12 @@ body {
 	@apply bg-gray-800 text-white p-4 rounded-md overflow-auto block;
 	font-family: "Courier New", Courier, monospace;
 }
+
 .inline-code {
 	@apply bg-gray-300 text-black font-semibold px-1 py-0.5 rounded-md;
 	font-family: "Courier New", Courier, monospace;
 }
+
 @font-face {
 	font-family: "Rubik";
 	src: url("/fonts/Rubik-VariableFont_wght.ttf") format("truetype");

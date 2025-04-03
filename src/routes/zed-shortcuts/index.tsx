@@ -2,9 +2,11 @@ import { component$, useSignal } from "@builder.io/qwik";
 import ImgZed from "~/media/zed.png?w=64&h=64&jsx";
 import {
 	allShortcutCategories,
-	shortcuts,
-	type ShortcutItem,
+	shortcutsByCategory,
 } from "~/data/zed-shortcuts";
+import ShortcutCard from "~/components/zed-shortcuts/ShortcutCard";
+import { filterShortcuts } from "~/utils/shortcut";
+import { LuSearch } from "@qwikest/icons/lucide";
 
 
 export const head = {
@@ -22,38 +24,7 @@ export const head = {
 	],
 };
 
-function filterShortcuts(
-	search: string,
-	selectedCategories: Set<string>,
-	shortcut: ShortcutItem,
-): boolean | undefined {
-	// Category filter
-	const categoryMatch =
-		selectedCategories.size === 0 ||
-		shortcut.categories?.some((cat) => selectedCategories.has(cat));
 
-	if (!categoryMatch) {
-		return false;
-	}
-
-	// Search term filter
-	if (!search) {
-		return true; // No search term, only category filter applies
-	}
-
-	const searchTerm = search.toLowerCase();
-	const key = Array.isArray(shortcut.key)
-		? shortcut.key.join(" or ").toLowerCase()
-		: shortcut.key.toLowerCase();
-	const name = shortcut.name.toLowerCase();
-	const description = shortcut.description?.toLowerCase();
-
-	return (
-		key.includes(searchTerm) ||
-		name.includes(searchTerm) ||
-		description?.includes(searchTerm)
-	);
-}
 
 export default component$(() => {
 	const searchTerm = useSignal("");
@@ -90,28 +61,26 @@ export default component$(() => {
 			</div>
 
 			<div class="mb-1">
-				<input
-					type="text"
-					placeholder="Search shortcuts..."
-					value={searchTerm.value}
-					onInput$={(e) => {
-						searchTerm.value = (e.target as HTMLInputElement).value;
-					}}
-					class="w-full p-2 border rounded-md"
-				/>
+				<label class="input w-full">
+					<LuSearch />
+					<input
+						type="text"
+						placeholder="Search shortcuts..."
+						value={searchTerm.value}
+						onInput$={(e) => {
+							searchTerm.value = (e.target as HTMLInputElement).value;
+						}}
+						class="grow"
+					/>
+				</label>
 			</div>
 			<div class="mb-4 mt-4 flex flex-wrap gap-2">
 				{allShortcutCategories.map((category) => {
 					const isSelected = selectedCategories.value.has(category);
 					return (
 						<button
+							class={["badge badge-lg badge-soft", isSelected ? "badge-primary" : "badge-neutral"]}
 							key={category}
-							class={[
-								"px-3 py-1 rounded-full text-sm border transition-colors duration-150",
-								isSelected
-									? "bg-primary-600 text-white border-primary-700 hover:bg-primary-700"
-									: "bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200 hover:border-gray-400",
-							]}
 							onClick$={() => {
 								const newSelection = new Set(selectedCategories.value);
 								if (isSelected) {
@@ -128,7 +97,7 @@ export default component$(() => {
 				})}
 				{selectedCategories.value.size > 0 && (
 					<button
-						class="px-3 py-1 rounded-full text-sm border border-red-300 bg-red-100 text-red-700 hover:bg-red-200 transition-colors duration-150"
+						class="badge badge-error badge-lg"
 						onClick$={() => {
 							selectedCategories.value = new Set();
 						}}
@@ -138,49 +107,19 @@ export default component$(() => {
 					</button>
 				)}
 			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-				{shortcuts.map((shortcut) => (
-					<div
-						class={[
-							"pr-2 py-3 border-b",
-							{
-								hidden: !filterShortcuts(
-									searchTerm.value,
-									selectedCategories.value,
-									shortcut,
-								),
-							},
-							"col-span-1 md:col-span-1 lg:col-span-1",
-						]}
-						key={shortcut.name}
-					>
-						<div class="flex gap-2 items-center">
-							{Array.isArray(shortcut.key) ? (
-								shortcut.key.map((key) => (
-									<span
-										key={key}
-										class="text-lg text-black bg-secondary-600 px-2 rounded-md"
-									>
-										{key}
-									</span>
-								))
-							) : (
-								<span class="text-lg text-black bg-secondary-600 px-2 rounded-md">
-									{shortcut.key}
-								</span>
-							)}
-							<div class="text-lg text-gray-800 font-medium">
-								{shortcut.name}
-							</div>
+			<div class="flex flex-col gap-4">
+				{allShortcutCategories.map(category => {
+					const shortcuts = shortcutsByCategory[category]?.filter(shortcut => filterShortcuts(searchTerm.value, selectedCategories.value, shortcut))
+					if (!shortcuts?.length) return null;
+					return <section key={category}>
+						<h2 class="text-xl font-bold mb-2">{category}</h2>
+						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-2">
+							{shortcuts.map((shortcut) => (
+								<ShortcutCard key={shortcut.name} shortcut={shortcut} hidden={false} />
+							))}
 						</div>
-
-						{shortcut.description && (
-							<div class="text-md text-gray-500 mt-2">
-								{shortcut.description}
-							</div>
-						)}
-					</div>
-				))}
+					</section>
+				})}
 			</div>
 		</div>
 	);
