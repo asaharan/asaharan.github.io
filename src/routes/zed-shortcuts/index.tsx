@@ -1,6 +1,11 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import ImgZed from "~/media/zed.png?w=64&h=64&jsx";
-import { shortcuts, type ShortcutIcon } from "~/data/zed-shortcuts";
+import {
+	allShortcutCategories,
+	shortcuts,
+	type ShortcutItem,
+} from "~/data/zed-shortcuts";
+
 
 export const head = {
 	title: "Zed Shortcuts",
@@ -12,18 +17,37 @@ export const head = {
 		},
 		{
 			name: "last-updated",
-			content: "2025-03-16",
+			content: "2025-04-03",
 		},
 	],
 };
 
-function doesMatch(search: string, shortcut: ShortcutIcon) {
+function filterShortcuts(
+	search: string,
+	selectedCategories: Set<string>,
+	shortcut: ShortcutItem,
+): boolean | undefined {
+	// Category filter
+	const categoryMatch =
+		selectedCategories.size === 0 ||
+		shortcut.categories?.some((cat) => selectedCategories.has(cat));
+
+	if (!categoryMatch) {
+		return false;
+	}
+
+	// Search term filter
+	if (!search) {
+		return true; // No search term, only category filter applies
+	}
+
 	const searchTerm = search.toLowerCase();
 	const key = Array.isArray(shortcut.key)
-		? shortcut.key.join(" or ")
-		: shortcut.key;
+		? shortcut.key.join(" or ").toLowerCase()
+		: shortcut.key.toLowerCase();
 	const name = shortcut.name.toLowerCase();
 	const description = shortcut.description?.toLowerCase();
+
 	return (
 		key.includes(searchTerm) ||
 		name.includes(searchTerm) ||
@@ -33,6 +57,7 @@ function doesMatch(search: string, shortcut: ShortcutIcon) {
 
 export default component$(() => {
 	const searchTerm = useSignal("");
+	const selectedCategories = useSignal<Set<string>>(new Set());
 
 	return (
 		<div class="lg:p-2">
@@ -75,13 +100,55 @@ export default component$(() => {
 					class="w-full p-2 border rounded-md"
 				/>
 			</div>
+			<div class="mb-4 mt-4 flex flex-wrap gap-2">
+				{allShortcutCategories.map((category) => {
+					const isSelected = selectedCategories.value.has(category);
+					return (
+						<button
+							key={category}
+							class={[
+								"px-3 py-1 rounded-full text-sm border transition-colors duration-150",
+								isSelected
+									? "bg-primary-600 text-white border-primary-700 hover:bg-primary-700"
+									: "bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200 hover:border-gray-400",
+							]}
+							onClick$={() => {
+								const newSelection = new Set(selectedCategories.value);
+								if (isSelected) {
+									newSelection.delete(category);
+								} else {
+									newSelection.add(category);
+								}
+								selectedCategories.value = newSelection;
+							}}
+						>
+							{category}
+						</button>
+					);
+				})}
+				{selectedCategories.value.size > 0 && (
+					<button
+						class="px-3 py-1 rounded-full text-sm border border-red-300 bg-red-100 text-red-700 hover:bg-red-200 transition-colors duration-150"
+						onClick$={() => {
+							selectedCategories.value = new Set();
+						}}
+						title="Clear all category filters"
+					>
+						Clear Filters &times;
+					</button>
+				)}
+			</div>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 				{shortcuts.map((shortcut) => (
 					<div
 						class={[
 							"pr-2 py-3 border-b",
 							{
-								hidden: !doesMatch(searchTerm.value, shortcut),
+								hidden: !filterShortcuts(
+									searchTerm.value,
+									selectedCategories.value,
+									shortcut,
+								),
 							},
 							"col-span-1 md:col-span-1 lg:col-span-1",
 						]}
