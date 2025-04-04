@@ -18,7 +18,6 @@ export interface WorkExperience {
 	description: string;
 	logo: string;
 	website: string;
-	logoHasPadding?: boolean;
 }
 
 interface SocialLink {
@@ -161,7 +160,6 @@ export const aboutMeRaw: {
 						"Masai School is a career focused coding school. We offer 30 weeks of intensive coding bootcamp where we train students to become software engineers. We have trained more than 1000 students so far.",
 					logo: "/icons/masai-logo-dark.svg",
 					website: "https://masaischool.com",
-					logoHasPadding: true,
 				},
 				{
 					company: "Prepleaf",

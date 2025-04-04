@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import { type DocumentHead, Link } from "@builder.io/qwik-city";
-import Card from "~/components/Card";
 
 interface BlogList {
 	title: string;
@@ -30,15 +29,17 @@ export default component$(() => {
 			<h1 class="font-bold text-3xl mb-4">Blog</h1>
 			<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
 				{blogList.map((blog) => (
-					<Card key={blog.slug}>
-						<Link
-							href={blog.slug}
-							class="text-lg font-semibold hover:text-blue-500 hover:underline"
-						>
-							{blog.title}
-						</Link>
-						<div>{blog.date}</div>
-					</Card>
+					<div class="card card-border border-base-300" key={blog.slug}>
+						<div class="card-body">
+							<Link
+								href={blog.slug}
+								class="text-lg link link-hover font-semibold hover:text-blue-500"
+							>
+								{blog.title}
+							</Link>
+							<div>{blog.date}</div>
+						</div>
+					</div>
 				))}
 			</div>
 		</div>

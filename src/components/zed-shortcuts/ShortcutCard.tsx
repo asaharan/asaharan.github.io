@@ -7,7 +7,7 @@ export default component$(({ shortcut, hidden }: { shortcut: ShortcutItem, hidde
 	return (
 		<div
 			class={[
-				"card bg-base-100 shadow-sm hover:shadow-xl transition",
+				"card card-border border-base-300 bg-base-100 transition hover:shadow-sm",
 				{
 					hidden,
 				},

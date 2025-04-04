@@ -63,7 +63,7 @@ export default component$(() => {
 						href={tech.url}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="flex flex-col items-center justify-center w-[72px] h-[72px] p-4 rounded-md bg-gray-50"
+						class="flex flex-col items-center justify-center w-[72px] h-[72px] p-4 rounded-md bg-gray-50/50"
 						key={tech.name}
 						title={tech.reason}
 					>

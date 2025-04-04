@@ -115,8 +115,7 @@ export default component$(() => {
 
 				<div class={["text-center mb-10", { hidden: !isRunning.value }]}>
 					<div
-						class="text-7xl font-bold font-mono tracking-wider text-transparent
-					bg-clip-text bg-gradient-to-r from-primary-900 to-primary-300"
+						class="text-7xl font-bold font-mono"
 					>
 						{String(minutes.value).padStart(2, "0")}:
 						{String(seconds.value).padStart(2, "0")}
@@ -129,7 +128,7 @@ export default component$(() => {
 					<button
 						onClick$={startTimer}
 						type="button"
-						class="bg-primary-500 hover:bg-primary-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95"
+						class="btn transition-all duration-200 hover:scale-105 active:scale-95"
 					>
 						Start
 					</button>
@@ -137,7 +136,7 @@ export default component$(() => {
 					<button
 						type="button"
 						onClick$={pauseTimer}
-						class="bg-gray-500 hover:bg-gray-600 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95"
+						class="btn transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95"
 					>
 						Pause
 					</button>
@@ -145,7 +144,7 @@ export default component$(() => {
 				<button
 					type="button"
 					onClick$={resetTimer}
-					class="bg-secondary-900 hover:bg-secondary-950 text-white px-8 py-3 rounded-lg font-semibold text-lg transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95"
+					class="btn transition-all duration-200 hover:shadow-lg hover:scale-105 active:scale-95"
 				>
 					Reset
 				</button>

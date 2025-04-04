@@ -4,7 +4,6 @@ import {
 	type PlaygroundPageItem,
 	playgroundItemGroups,
 } from "~/data/tools.config";
-import Card from "./Card";
 
 interface ToolCardProps {
 	title: string;
@@ -18,17 +17,15 @@ interface ToolCardProps {
 const ToolCard = component$(
 	({ title, path, icon, category, isExternal }: ToolCardProps) => {
 		return (
-			<Card>
-				<>
-					<Link target={isExternal ? "_blank" : undefined} href={path}>
-						<span class="inline-flex justify-start items-start gap-2  text-blue-500 text-xl font-medium">
-							<span class="text-2xl mr-1">{icon}</span>
-							<p class="uppercase tracking-wide">{title}</p>
-						</span>
+			<div class="card card-border border-base-300 hover:shadow-sm">
+				<div class="card-body">
+					<Link target={isExternal ? "_blank" : undefined} href={path} class="link link-hover uppercase inline-flex justify-start items-start gap-2 text-lg font-medium">
+						<span class="text-2xl mr-1">{icon}</span>
+						{title}
 					</Link>
-					<span class="block text-sm text-gray-500">{category}</span>
-				</>
-			</Card>
+					{category && <span class="badge badge-neutral badge-outline mt-2">{category}</span>}
+				</div>
+			</div>
 		);
 	},
 );
