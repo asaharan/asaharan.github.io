@@ -26,12 +26,12 @@ const links: ITopbarLink[] = [
 	},
 	{
 		text: "Bit Bubble",
-		href: "https://bit-bubble.saharan.me?utm_source=home-nav",
+		href: "https://bit-bubble.saharan.dev?utm_source=home-nav",
 		icon: "Game",
 	},
 	{
 		text: "Tax Calculator",
-		href: "https://tax.saharan.me?utm_source=home-nav",
+		href: "https://tax.saharan.dev?utm_source=home-nav",
 		icon: "Tax",
 	},
 	{

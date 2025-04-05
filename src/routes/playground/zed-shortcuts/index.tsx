@@ -7,7 +7,7 @@ export const head: DocumentHead = {
 		...h.meta,
 		{
 			name: "canonical",
-			content: "https://saharan.me/zed-shortcuts",
+			content: "https://saharan.dev/zed-shortcuts",
 		},
 	],
 };

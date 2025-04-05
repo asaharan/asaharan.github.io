@@ -12,7 +12,7 @@ export default extendConfig(baseConfig, () => {
 		},
 		plugins: [
 			staticAdapter({
-				origin: "https://saharan.me",
+				origin: "https://saharan.dev",
 			}),
 		],
 	};

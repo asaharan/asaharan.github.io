@@ -25,9 +25,9 @@ export interface PlaygroundPageItem {
 	description: string;
 	path: string;
 	icon?:
-		| ((props: SVGProps<SVGSVGElement>) => JSXNode)
-		| typeof LowercaseSvg
-		| typeof Uppercase;
+	| ((props: SVGProps<SVGSVGElement>) => JSXNode)
+	| typeof LowercaseSvg
+	| typeof Uppercase;
 	position?: number;
 	category?: string;
 	deprecated?: boolean;
@@ -65,7 +65,7 @@ const playgroundItems: PlaygroundPageItem[] = [
 	{
 		title: "Quick Algebra",
 		description: "Practice algebra",
-		path: "https://www.jeeready.com?utm_source=saharan.me",
+		path: "https://www.jeeready.com?utm_source=saharan.dev",
 		position: 1,
 		category: "Games",
 		isExternal: true,

@@ -19,6 +19,15 @@
 - **Icons**: Use @qwikest/icons for Material icons or custom SVG components
 - **Error Handling**: Use structured error handling with specific error types
 
+## DaisyUI Guidelines
+- **Semantic Colors**: Use daisyUI color names (`primary`, `secondary`, `accent`) for theme consistency
+- **Component Structure**: Follow daisyUI component patterns with base, part, and modifier classes
+- **HTML Structure**: Use proper semantic HTML elements with daisyUI classes
+- **Responsive Design**: Apply responsive prefixes when needed (`sm:`, `md:`, `lg:`)
+- **Customization**: Override styles with Tailwind utilities or `!` prefix when necessary
+- **Theme Support**: Design components to work across light/dark themes using daisyUI variables
+- **Accessibility**: Include appropriate ARIA attributes and ensure proper contrast
+
 ## Qwik Syntax
 - Use `component$()` for defining components
 - Use `$()` for capturing references to functions
